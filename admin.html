@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود | رسانه هنری قمر</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fdfbf7 0%, #f5efe6 50%, #ede4d8 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+      padding: 48px 36px 40px;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(145deg, #f7f0e8, #ede0d0);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-icon i {
+      font-size: 32px;
+      color: #8b6f4e;
+    }
+
+    .site-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #3e2c1c;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      color: #a08b73;
+      font-weight: 400;
+    }
+
+    .separator {
+      width: 48px;
+      height: 2px;
+      background: #c8af93;
+      margin: 10px auto 0;
+      border-radius: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5c4a3a;
+      margin-bottom: 8px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b8a48e;
+      font-size: 16px;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 14px 44px 14px 16px;
+      border: 1.5px solid #e5ddd3;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #3e2c1c;
+      background: #fdfaf6;
+      transition: all 0.3s ease;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .input-wrapper input:focus {
+      border-color: #c8af93;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(200, 175, 147, 0.1);
+    }
+
+    .input-wrapper input::placeholder {
+      color: #c4b6a6;
+    }
+
+    .error-message {
+      display: none;
+      color: #c0392b;
+      font-size: 12px;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: #fdf0ee;
+      border-radius: 8px;
+      border: 1px solid #f5d6d3;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(145deg, #8b6f4e, #6d553b);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-login:hover {
+      background: linear-gradient(145deg, #7d6343, #5e4932);
+      box-shadow: 0 4px 16px rgba(107, 83, 59, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .btn-login:disabled {
+      background: #c4b6a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #b8a48e;
+    }
+
+    .footer-text i {
+      margin: 0 4px;
+      font-size: 10px;
+      color: #c8af93;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="logo-section">
+      <div class="logo-icon">
+        <i class="fa-solid fa-star-and-crescent"></i>
+      </div>
+      <h1 class="site-name">رسانه هنری قمر</h1>
+      <p class="site-subtitle">پنل مدیریت</p>
+      <div class="separator"></div>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">نام کاربری</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" id="username" placeholder="نام کاربری خود را وارد کنید" required autocomplete="username">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">رمز عبور</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+      </div>
+
+      <div class="error-message" id="errorMessage"></div>
+
+      <button type="submit" class="btn-login" id="loginBtn">
+        <i class="fa-solid fa-right-to-bracket"></i> ورود به پنل
+      </button>
+    </form>
+
+    <p class="footer-text">
+      <i class="fa-solid fa-circle"></i> قمر، رسانه هنر و خلاقیت <i class="fa-solid fa-circle"></i>
+    </p>
+  </div>
+
+  <script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycbw5nytvi4Sj1CbSJfTnkfhi3U8rQVpXe9QUNVdnMOuZTab0SCJNaRioZ_68MQg_wnLXgw/exec';
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('errorMessage');
+      const loginBtn = document.getElementById('loginBtn');
+
+      if (!username || !password) {
+        errorDiv.textContent = 'لطفاً نام کاربری و رمز عبور را وارد کنید.';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      errorDiv.style.display = 'none';
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'login',
+            username: username,
+            password: password
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.result === 'success') {
+          localStorage.setItem('qm_user', JSON.stringify(result.data));
+          window.location.href = 'dashboard.html';
+        } else {
+          errorDiv.textContent = result.message || 'خطا در ورود';
+          errorDiv.style.display = 'block';
+        }
+      } catch (error) {
+        errorDiv.textContent = 'خطا در ارتباط با سرور';
+        errorDiv.style.display = 'block';
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> ورود به پنل';
+      }
+    });
+  </script>
+
+</body>
+</html>
