@@ -7,351 +7,125 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --cream: #fdfbf7;
-      --milk: #f5efe6;
-      --beige: #ede4d8;
-      --gold: #c8af93;
-      --brown: #8b6f4e;
-      --dark: #3e2c1c;
-      --text: #5c4a3a;
-      --white: #ffffff;
-      --red: #e74c3c;
-      --green: #27ae60;
+      --cream: #fdfbf7; --milk: #f5efe6; --beige: #ede4d8;
+      --gold: #c8af93; --brown: #8b6f4e; --dark: #3e2c1c;
+      --text: #5c4a3a; --white: #ffffff; --red: #e74c3c; --green: #27ae60;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      min-height: 100vh;
+      background: var(--cream); color: var(--text); min-height: 100vh;
     }
-
-    /* ========== HEADER ========== */
     .header {
-      background: var(--white);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-      padding: 16px 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      padding: 16px 20px; text-align: center; position: sticky; top: 0; z-index: 100;
     }
-
     .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      max-width: 600px;
-      margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; max-width: 600px; margin: 0 auto;
     }
-
     .header-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--milk);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--milk); box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     }
-
-    .header-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: 0.5px;
-    }
-
-    .header-subtitle {
-      font-size: 11px;
-      color: #a08b73;
-      margin-top: 1px;
-    }
-
-    /* ========== ORDER BUTTON ========== */
-    .order-section {
-      text-align: center;
-      padding: 20px 20px 10px;
-    }
-
+    .header-title { font-size: 24px; font-weight: 700; color: var(--dark); }
+    .header-subtitle { font-size: 11px; color: #a08b73; }
+    .order-section { text-align: center; padding: 20px 20px 10px; }
     .btn-order {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 30px;
-      background: linear-gradient(145deg, var(--brown), #6d553b);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.3s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 30px; background: linear-gradient(145deg, var(--brown), #6d553b);
+      color: var(--white); border: none; border-radius: 12px; font-size: 14px;
+      font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.3s ease;
       box-shadow: 0 4px 14px rgba(107,83,59,0.2);
     }
+    .btn-order:hover { background: linear-gradient(145deg, #7d6343, #5e4932); transform: translateY(-2px); }
 
-    .btn-order:hover {
-      background: linear-gradient(145deg, #7d6343, #5e4932);
-      transform: translateY(-2px);
+    /* ========== SEARCH & FILTER ========== */
+    .search-filter-bar {
+      max-width: 1100px; margin: 0 auto 8px; padding: 0 16px;
+      display: flex; gap: 10px; flex-wrap: wrap;
     }
-
-    .btn-order i { font-size: 16px; }
-
-    /* ========== PRODUCTS GRID ========== */
-    .products-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px;
+    .search-box {
+      flex: 2; min-width: 200px; position: relative;
     }
-
-    .section-title {
-      text-align: center;
-      font-size: 20px;
-      color: var(--dark);
-      margin-bottom: 20px;
-      position: relative;
+    .search-box input {
+      width: 100%; padding: 12px 40px 12px 16px;
+      border: 1.5px solid #e5ddd3; border-radius: 12px;
+      font-size: 13px; color: var(--dark); background: var(--white);
+      outline: none; font-family: inherit; transition: all 0.3s;
     }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 2px;
-      background: var(--gold);
-      margin: 10px auto 0;
-      border-radius: 1px;
+    .search-box input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,175,147,0.1); }
+    .search-box i {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: #b8a48e; font-size: 14px;
     }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+    .filter-select {
+      flex: 1; min-width: 140px;
     }
+    .filter-select select {
+      width: 100%; padding: 12px 16px; border: 1.5px solid #e5ddd3;
+      border-radius: 12px; font-size: 13px; color: var(--dark);
+      background: var(--white); outline: none; font-family: inherit;
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b6f4e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: left 16px center;
+    }
+    .filter-select select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,175,147,0.1); }
 
+    .products-container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .section-title { text-align: center; font-size: 20px; color: var(--dark); margin-bottom: 20px; }
+    .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--gold); margin: 10px auto 0; border-radius: 1px; }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .product-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.04);
-      transition: all 0.3s ease;
-      cursor: pointer;
+      background: var(--white); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.04); transition: all 0.3s ease; cursor: pointer;
     }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .product-image { width: 100%; height: 180px; object-fit: cover; background: var(--milk); }
+    .product-info { padding: 12px 14px; }
+    .product-name { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+    .product-category { font-size: 10px; color: var(--brown); background: var(--milk); padding: 3px 10px; border-radius: 16px; font-weight: 500; }
+    .product-price { font-size: 13px; font-weight: 700; color: var(--green); }
+    .product-price span { font-size: 10px; font-weight: 400; color: #a08b73; margin-right: 2px; }
+    .product-like-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px solid #f5efe6; }
+    .product-likes-count { font-size: 11px; color: #a08b73; display: flex; align-items: center; gap: 3px; }
+    .product-likes-count i { color: var(--red); font-size: 10px; }
+    .btn-card-like { background: none; border: none; cursor: pointer; font-size: 16px; color: #ccc; transition: all 0.3s ease; padding: 4px; }
+    .btn-card-like:hover { color: var(--red); transform: scale(1.2); }
+    .btn-card-like.liked { color: var(--red); }
+    .btn-card-like.liked i { font-weight: 900; animation: heartBeat 0.4s ease; }
+    @keyframes heartBeat { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }
+    .no-results { text-align: center; padding: 40px 20px; color: #b8a48e; grid-column: 1/-1; }
+    .no-results i { font-size: 48px; margin-bottom: 12px; display: block; }
+    .empty-state { text-align: center; padding: 60px 20px; color: #b8a48e; grid-column: 1/-1; }
+    .empty-state i { font-size: 56px; margin-bottom: 14px; display: block; }
 
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-    }
+    .footer { text-align: center; padding: 24px 20px; background: var(--white); margin-top: 20px; border-top: 1px solid #f0e8dc; }
+    .footer-stats { display: flex; justify-content: center; gap: 32px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .footer-stat i { font-size: 18px; color: var(--brown); }
+    .footer-stat span { font-size: 18px; font-weight: 700; color: var(--dark); }
+    .footer-stat small { font-size: 10px; color: #a08b73; }
+    .footer-text { font-size: 11px; color: #b8a48e; }
 
-    .product-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background: var(--milk);
-    }
-
-    .product-info {
-      padding: 12px 14px;
-    }
-
-    .product-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .product-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .product-category {
-      font-size: 10px;
-      color: var(--brown);
-      background: var(--milk);
-      padding: 3px 10px;
-      border-radius: 16px;
-      font-weight: 500;
-    }
-
-    .product-price {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--green);
-    }
-
-    .product-price span {
-      font-size: 10px;
-      font-weight: 400;
-      color: #a08b73;
-      margin-right: 2px;
-    }
-
-    .product-like-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid #f5efe6;
-    }
-
-    .product-likes-count {
-      font-size: 11px;
-      color: #a08b73;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .product-likes-count i {
-      color: var(--red);
-      font-size: 10px;
-    }
-
-    .btn-card-like {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      color: #ccc;
-      transition: all 0.3s ease;
-      padding: 4px;
-    }
-
-    .btn-card-like:hover {
-      color: var(--red);
-      transform: scale(1.2);
-    }
-
-    .btn-card-like.liked {
-      color: var(--red);
-    }
-
-    .btn-card-like.liked i {
-      font-weight: 900;
-      animation: heartBeat 0.4s ease;
-    }
-
-    @keyframes heartBeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-      100% { transform: scale(1); }
-    }
-
-    /* ========== EMPTY ========== */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: #b8a48e;
-      grid-column: 1 / -1;
-    }
-
-    .empty-state i {
-      font-size: 56px;
-      margin-bottom: 14px;
-      display: block;
-    }
-
-    .empty-state p { font-size: 15px; }
-
-    /* ========== FOOTER ========== */
-    .footer {
-      text-align: center;
-      padding: 24px 20px;
-      background: var(--white);
-      margin-top: 20px;
-      border-top: 1px solid #f0e8dc;
-    }
-
-    .footer-stats {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .footer-stat i {
-      font-size: 18px;
-      color: var(--brown);
-      margin-bottom: 2px;
-    }
-
-    .footer-stat span {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .footer-stat small {
-      font-size: 10px;
-      color: #a08b73;
-    }
-
-    .footer-text {
-      font-size: 11px;
-      color: #b8a48e;
-    }
-
-    /* ========== TABLET ========== */
-    @media (max-width: 992px) {
-      .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-      }
-      .product-image { height: 160px; }
-    }
-
-    /* ========== MOBILE ========== */
+    @media (max-width: 992px) { .products-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; } .product-image { height: 160px; } }
     @media (max-width: 768px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .header-inner { flex-direction: column; gap: 6px; }
       .header-title { font-size: 20px; }
       .header-logo { width: 44px; height: 44px; }
-
       .product-image { height: 140px; }
       .product-info { padding: 10px 12px; }
       .product-name { font-size: 12px; }
       .product-price { font-size: 12px; }
-      .product-category { font-size: 9px; padding: 2px 8px; }
+      .search-filter-bar { flex-direction: column; gap: 8px; }
     }
-
-    /* ========== SMALL MOBILE ========== */
-    @media (max-width: 400px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
-      .product-image { height: 120px; }
-      .product-name { font-size: 11px; }
-      .product-price { font-size: 11px; }
-    }
+    @media (max-width: 400px) { .products-grid { gap: 8px; } .product-image { height: 120px; } .product-name { font-size: 11px; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="رسانه هنری قمر" class="header-logo">
@@ -362,118 +136,113 @@
     </div>
   </header>
 
-  <!-- ORDER BUTTON -->
   <section class="order-section">
     <button class="btn-order" onclick="window.location.href='order.html'">
-      <i class="fa-solid fa-pen-to-square"></i>
-      ثبت سفارش اختصاصی
+      <i class="fa-solid fa-pen-to-square"></i> ثبت سفارش اختصاصی
     </button>
   </section>
 
-  <!-- PRODUCTS -->
+  <!-- SEARCH & FILTER -->
+  <div class="search-filter-bar">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="جستجوی محصول..." oninput="filterProducts()">
+    </div>
+    <div class="filter-select">
+      <select id="filterSelect" onchange="filterProducts()">
+        <option value="all">همه محصولات</option>
+        <option value="poster">پوستر</option>
+        <option value="typography">تایپوگرافی</option>
+        <option value="profile">پروفایل</option>
+        <option value="logo">لوگو</option>
+        <option value="other">سایر</option>
+      </select>
+    </div>
+  </div>
+
   <section class="products-container">
     <h2 class="section-title">محصولات آماده</h2>
     <div class="products-grid" id="productsGrid">
-      <div class="empty-state">
-        <i class="fa-solid fa-box-open"></i>
-        <p>در حال بارگذاری محصولات...</p>
-      </div>
+      <div class="empty-state"><i class="fa-solid fa-box-open"></i><p>در حال بارگذاری محصولات...</p></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-stats">
-      <div class="footer-stat">
-        <i class="fa-solid fa-eye"></i>
-        <span id="footerVisits">0</span>
-        <small>بازدید</small>
-      </div>
-      <div class="footer-stat">
-        <i class="fa-solid fa-heart"></i>
-        <span id="footerLikes">0</span>
-        <small>لایک</small>
-      </div>
-      <div class="footer-stat">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="footerOrders">0</span>
-        <small>سفارش</small>
-      </div>
+      <div class="footer-stat"><i class="fa-solid fa-eye"></i><span id="footerVisits">0</span><small>بازدید</small></div>
+      <div class="footer-stat"><i class="fa-solid fa-heart"></i><span id="footerLikes">0</span><small>لایک</small></div>
+      <div class="footer-stat"><i class="fa-solid fa-cart-shopping"></i><span id="footerOrders">0</span><small>سفارش</small></div>
     </div>
     <p class="footer-text"><i class="fa-solid fa-star-and-crescent"></i> رسانه هنری قمر — کلیه حقوق محفوظ است</p>
   </footer>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbzPc09WqLHljWVha4stGqdXqayzbz96M0C6FaRPSYyTzr47a7BKI6lV60BkmZx6r6wJ2g/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycby1E5_oBz9niqfTufk9SqX1bhXkH_uIc9Eg1-c3sSDprsUTXANfjz2gkWk0SEJrmVLSvQ/exec';
+    let allProducts = [];
 
     const categoryLabels = {
-      poster: 'پوستر',
-      typography: 'تایپوگرافی',
-      profile: 'پروفایل',
-      logo: 'لوگو',
-      other: 'سایر'
+      poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر'
     };
 
     async function loadProducts() {
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          body: JSON.stringify({ action: 'getProducts', role: 'visitor', username: '' })
-        });
+        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getProducts', role: 'visitor', username: '' }) });
         const data = await res.json();
-        const grid = document.getElementById('productsGrid');
-
         if (data.result === 'success' && data.data.products.length > 0) {
-          const available = data.data.products.filter(p => p.status !== 'sold');
-          
-          if (available.length === 0) {
-            grid.innerHTML = `
-              <div class="empty-state">
-                <i class="fa-solid fa-box-open"></i>
-                <p>در حال حاضر محصولی موجود نیست.</p>
-              </div>`;
-            return;
-          }
-
-          grid.innerHTML = available.map(p => {
-            const hasLiked = localStorage.getItem('qm_liked_' + p.product_id) === 'true';
-            return `
-              <div class="product-card" onclick="goToProduct('${p.product_id}')">
-                <img src="${p.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" 
-                     alt="${p.name}" 
-                     class="product-image"
-                     onerror="this.src='https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'">
-                <div class="product-info">
-                  <div class="product-name">${p.name}</div>
-                  <div class="product-meta">
-                    <span class="product-category">${categoryLabels[p.category] || p.category || 'سایر'}</span>
-                    <span class="product-price">${Number(p.price).toLocaleString('fa-IR')} <span>تومان</span></span>
-                  </div>
-                  <div class="product-like-row">
-                    <span class="product-likes-count"><i class="fa-solid fa-heart"></i> ${p.likes || 0}</span>
-                    <button class="btn-card-like ${hasLiked ? 'liked' : ''}" onclick="event.stopPropagation(); toggleLikeCard('${p.product_id}', this)" title="می‌پسندم">
-                      <i class="${hasLiked ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join('');
+          allProducts = data.data.products.filter(p => p.status !== 'sold');
+          renderProducts(allProducts);
         } else {
-          grid.innerHTML = `
-            <div class="empty-state">
-              <i class="fa-solid fa-box-open"></i>
-              <p>هنوز محصولی ثبت نشده است.</p>
-            </div>`;
+          document.getElementById('productsGrid').innerHTML = '<div class="empty-state"><i class="fa-solid fa-box-open"></i><p>هنوز محصولی ثبت نشده است.</p></div>';
         }
       } catch(e) {
-        console.error(e);
-        document.getElementById('productsGrid').innerHTML = `
-          <div class="empty-state">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <p>خطا در بارگذاری محصولات</p>
-          </div>`;
+        document.getElementById('productsGrid').innerHTML = '<div class="empty-state"><i class="fa-solid fa-triangle-exclamation"></i><p>خطا در بارگذاری</p></div>';
       }
+    }
+
+    function renderProducts(products) {
+      const grid = document.getElementById('productsGrid');
+      if (products.length === 0) {
+        grid.innerHTML = '<div class="no-results"><i class="fa-solid fa-search"></i><p>محصولی با این مشخصات پیدا نشد.</p></div>';
+        return;
+      }
+      grid.innerHTML = products.map(p => {
+        const hasLiked = localStorage.getItem('qm_liked_' + p.product_id) === 'true';
+        return `
+          <div class="product-card" onclick="goToProduct('${p.product_id}')">
+            <img src="${p.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" alt="${p.name}" class="product-image" onerror="this.src='https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'">
+            <div class="product-info">
+              <div class="product-name">${p.name}</div>
+              <div class="product-meta">
+                <span class="product-category">${categoryLabels[p.category] || p.category || 'سایر'}</span>
+                <span class="product-price">${Number(p.price).toLocaleString('fa-IR')} <span>تومان</span></span>
+              </div>
+              <div class="product-like-row">
+                <span class="product-likes-count"><i class="fa-solid fa-heart"></i> ${p.likes || 0}</span>
+                <button class="btn-card-like ${hasLiked ? 'liked' : ''}" onclick="event.stopPropagation(); toggleLikeCard('${p.product_id}', this)">
+                  <i class="${hasLiked ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterProducts() {
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filter = document.getElementById('filterSelect').value;
+      
+      let filtered = allProducts;
+      
+      if (search) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(search));
+      }
+      
+      if (filter !== 'all') {
+        filtered = filtered.filter(p => p.category === filter);
+      }
+      
+      renderProducts(filtered);
     }
 
     function goToProduct(productId) {
@@ -484,17 +253,11 @@
     async function toggleLikeCard(productId, button) {
       const likeKey = 'qm_liked_' + productId;
       const hasLiked = localStorage.getItem(likeKey) === 'true';
-
       if (hasLiked) {
-        localStorage.removeItem(likeKey);
-        button.classList.remove('liked');
+        localStorage.removeItem(likeKey); button.classList.remove('liked');
         button.innerHTML = '<i class="fa-regular fa-heart"></i>';
-        
         try {
-          const res = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify({ action: 'incrementLikes', product_id: productId, action_type: 'remove' })
-          });
+          const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'incrementLikes', product_id: productId, action_type: 'remove' }) });
           const d = await res.json();
           if (d.result === 'success') {
             const likesEl = button.parentElement.querySelector('.product-likes-count');
@@ -503,15 +266,10 @@
           }
         } catch(e) {}
       } else {
-        localStorage.setItem(likeKey, 'true');
-        button.classList.add('liked');
+        localStorage.setItem(likeKey, 'true'); button.classList.add('liked');
         button.innerHTML = '<i class="fa-solid fa-heart"></i>';
-        
         try {
-          const res = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify({ action: 'incrementLikes', product_id: productId, action_type: 'add' })
-          });
+          const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'incrementLikes', product_id: productId, action_type: 'add' }) });
           const d = await res.json();
           if (d.result === 'success') {
             const likesEl = button.parentElement.querySelector('.product-likes-count');
@@ -524,17 +282,14 @@
 
     async function loadFooterStats() {
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          body: JSON.stringify({ action: 'getStats' })
-        });
+        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getStats' }) });
         const data = await res.json();
         if (data.result === 'success') {
           document.getElementById('footerVisits').textContent = (data.data.visits || 0).toLocaleString('fa-IR');
           document.getElementById('footerLikes').textContent = (data.data.likes || 0).toLocaleString('fa-IR');
           document.getElementById('footerOrders').textContent = (data.data.orders || 0).toLocaleString('fa-IR');
         }
-      } catch(e) { console.error(e); }
+      } catch(e) {}
     }
 
     loadProducts();
