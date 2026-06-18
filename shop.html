@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسانه هنری قمر | محصول</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #fdfbf7;
+      --milk: #f5efe6;
+      --beige: #ede4d8;
+      --gold: #c8af93;
+      --brown: #8b6f4e;
+      --dark: #3e2c1c;
+      --text: #5c4a3a;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .header-back i { font-size: 16px; }
+    .header-back:hover { color: var(--dark); }
+
+    .header-logo-small {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-logo-small img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .header-logo-small span {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 16px;
+    }
+
+    /* ========== PRODUCT DETAIL ========== */
+    .product-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .product-image-large {
+      width: 100%;
+      max-height: 450px;
+      object-fit: contain;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    .product-details {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .product-category-badge {
+      display: inline-block;
+      background: var(--milk);
+      color: var(--brown);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .product-price-large {
+      font-size: 28px;
+      font-weight: 700;
+      color: #27ae60;
+      margin-bottom: 16px;
+    }
+
+    .product-price-large span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a08b73;
+      margin-right: 4px;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: #6b5b4a;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #fdfaf6;
+      border-radius: 12px;
+    }
+
+    .product-meta-info {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: #a08b73;
+    }
+
+    .product-meta-info span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .product-meta-info i { color: var(--brown); }
+
+    .btn-buy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(145deg, #27ae60, #219a52);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(39,174,96,0.25);
+    }
+
+    .btn-buy:hover {
+      background: linear-gradient(145deg, #219a52, #1e8449);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(39,174,96,0.35);
+    }
+
+    .btn-buy i { font-size: 20px; }
+
+    /* ========== EMPTY / ERROR ========== */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: #b8a48e;
+    }
+
+    .empty-state i { font-size: 64px; margin-bottom: 16px; display: block; }
+    .empty-state p { font-size: 16px; margin-bottom: 20px; }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--brown);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 600px) {
+      .product-container { padding: 12px; }
+      .product-image-large { max-height: 300px; }
+      .product-title { font-size: 20px; }
+      .product-price-large { font-size: 22px; }
+      .product-details { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <button class="header-back" onclick="history.back()">
+      <i class="fa-solid fa-arrow-right"></i>
+      بازگشت
+    </button>
+    <div class="header-logo-small">
+      <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="لوگو">
+      <span>رسانه هنری قمر</span>
+    </div>
+    <div style="width:60px;"></div>
+  </header>
+
+  <!-- PRODUCT DETAIL -->
+  <div class="product-container" id="productContainer">
+    <div class="empty-state" id="loadingState">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <p>در حال بارگذاری محصول...</p>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyYFS0EPvyg2nvcniO9F4qpomgp6S4Dxi3YOy1nDhSHKppft5fvCPU9Gb2TmOR3Odxbog/exec';
+
+    const categoryLabels = {
+      poster: 'پوستر',
+      typography: 'تایپوگرافی',
+      profile: 'پروفایل',
+      logo: 'لوگو',
+      other: 'سایر'
+    };
+
+    async function loadProduct() {
+      const productId = localStorage.getItem('qm_selected_product');
+      const container = document.getElementById('productContainer');
+
+      if (!productId) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>محصولی انتخاب نشده است.</p>
+            <a href="menu.html" class="btn-back">
+              <i class="fa-solid fa-arrow-right"></i>
+              بازگشت به محصولات
+            </a>
+          </div>`;
+        return;
+      }
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'getProducts', role: 'visitor', username: '' })
+        });
+        const data = await res.json();
+
+        if (data.result === 'success') {
+          const product = data.data.products.find(p => p.product_id === productId);
+
+          if (!product) {
+            container.innerHTML = `
+              <div class="empty-state">
+                <i class="fa-solid fa-box-open"></i>
+                <p>محصول مورد نظر یافت نشد.</p>
+                <a href="menu.html" class="btn-back">
+                  <i class="fa-solid fa-arrow-right"></i>
+                  بازگشت به محصولات
+                </a>
+              </div>`;
+            return;
+          }
+
+          // Increment view
+          fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'incrementViews', product_id: productId })
+          }).catch(() => {});
+
+          container.innerHTML = `
+            <img src="${product.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" 
+                 alt="${product.name}" 
+                 class="product-image-large"
+                 onerror="this.src='https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'">
+            
+            <div class="product-details">
+              <span class="product-category-badge">
+                <i class="fa-solid fa-tag"></i> ${categoryLabels[product.category] || product.category || 'سایر'}
+              </span>
+              
+              <h1 class="product-title">${product.name}</h1>
+              
+              <div class="product-price-large">
+                ${Number(product.price).toLocaleString('fa-IR')} <span>تومان</span>
+              </div>
+              
+              <div class="product-description">
+                ${product.description || 'توضیحاتی برای این محصول ثبت نشده است.'}
+              </div>
+              
+              <div class="product-meta-info">
+                <span><i class="fa-solid fa-eye"></i> ${product.views || 0} بازدید</span>
+                <span><i class="fa-solid fa-heart"></i> ${product.likes || 0} لایک</span>
+                <span><i class="fa-solid fa-calendar"></i> ${product.date_added || '-'}</span>
+              </div>
+              
+              <button class="btn-buy" onclick="buyProduct('${product.product_id}', '${product.name}')">
+                <i class="fa-solid fa-cart-shopping"></i>
+                خرید این محصول
+              </button>
+            </div>
+          `;
+        }
+      } catch(e) {
+        console.error(e);
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>خطا در بارگذاری محصول</p>
+            <a href="menu.html" class="btn-back">
+              <i class="fa-solid fa-arrow-right"></i>
+              بازگشت به محصولات
+            </a>
+          </div>`;
+      }
+    }
+
+    function buyProduct(productId, productName) {
+      // For now - alert. Later connect to payment gateway
+      alert('درخواست خرید برای: ' + productName + '\nکد محصول: ' + productId + '\n\nبخش پرداخت به زودی اضافه می‌شود.');
+    }
+
+    loadProduct();
+  </script>
+</body>
+</html>
