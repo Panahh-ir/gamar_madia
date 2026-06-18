@@ -744,10 +744,10 @@
               <td><span class="badge ${o.payment_status === 'paid' ? 'badge-success' : 'badge-danger'}">${o.payment_status === 'paid' ? 'پرداخت شده' : 'پرداخت نشده'}</span></td>
               <td>
                 ${o.description ? `
-                  <button class="btn btn-xs btn-outline" onclick="showDescription('${(o.description || '').replace(/'/g, "\\'").replace(/\n/g, '\\n')}')">
-                  <i class="fa-solid fa-eye"></i> مشاهده
+                  <button class="btn btn-xs btn-outline" style="padding:4px 8px;font-size:10px;white-space:nowrap;" onclick="showDescription('${(o.description || '').replace(/'/g, "\\'").replace(/\n/g, '\\n')}')">
+                    <i class="fa-solid fa-eye"></i>
                   </button>
-                  ` : '-'}
+                ` : '<span style="color:#c4b6a6;font-size:11px;">—</span>'}
               </td>
               <td>${o.date_submitted || '-'}</td>
               <td>${o.file_link ? '<a href="' + o.file_link + '" target="_blank"><i class="fa-solid fa-download"></i></a>' : '-'}</td>
