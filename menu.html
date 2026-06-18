@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسانه هنری قمر | منوی محصولات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #fdfbf7;
+      --milk: #f5efe6;
+      --beige: #ede4d8;
+      --gold: #c8af93;
+      --brown: #8b6f4e;
+      --dark: #3e2c1c;
+      --text: #5c4a3a;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--milk);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 1px;
+    }
+
+    .header-subtitle {
+      font-size: 12px;
+      color: #a08b73;
+      margin-top: 2px;
+    }
+
+    /* ========== ORDER BUTTON ========== */
+    .order-section {
+      text-align: center;
+      padding: 24px 20px 12px;
+    }
+
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      background: linear-gradient(145deg, var(--brown), #6d553b);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(107,83,59,0.2);
+    }
+
+    .btn-order:hover {
+      background: linear-gradient(145deg, #7d6343, #5e4932);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(107,83,59,0.3);
+    }
+
+    .btn-order i {
+      font-size: 18px;
+    }
+
+    /* ========== PRODUCTS GRID ========== */
+    .products-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 22px;
+      color: var(--dark);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 12px auto 0;
+      border-radius: 1px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: var(--milk);
+    }
+
+    .product-info {
+      padding: 16px 20px;
+    }
+
+    .product-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .product-category {
+      font-size: 12px;
+      color: var(--brown);
+      background: var(--milk);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #27ae60;
+    }
+
+    .product-price span {
+      font-size: 11px;
+      font-weight: 400;
+      color: #a08b73;
+      margin-right: 4px;
+    }
+
+    /* ========== EMPTY ========== */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #b8a48e;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state i {
+      font-size: 64px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .empty-state p {
+      font-size: 16px;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      color: #b8a48e;
+      font-size: 12px;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 600px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .header-title {
+        font-size: 22px;
+      }
+
+      .header-logo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .product-image {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="رسانه هنری قمر" class="header-logo">
+      <div>
+        <div class="header-title">رسانه هنری قمر</div>
+        <div class="header-subtitle">هنر ماندگار، از قمر ماندگارتر</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ORDER BUTTON -->
+  <section class="order-section">
+    <button class="btn-order" onclick="window.location.href='order.html'">
+      <i class="fa-solid fa-pen-to-square"></i>
+      ثبت سفارش اختصاصی
+    </button>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-container">
+    <h2 class="section-title">محصولات آماده</h2>
+    <div class="products-grid" id="productsGrid">
+      <div class="empty-state">
+        <i class="fa-solid fa-box-open"></i>
+        <p>در حال بارگذاری محصولات...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><i class="fa-solid fa-star-and-crescent"></i> رسانه هنری قمر — کلیه حقوق محفوظ است</p>
+  </footer>
+
+  <script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycbw5nytvi4Sj1CbSJfTnkfhi3U8rQVpXe9QUNVdnMOuZTab0SCJNaRioZ_68MQg_wnLXgw/exec';
+
+    const categoryLabels = {
+      poster: 'پوستر',
+      typography: 'تایپوگرافی',
+      profile: 'پروفایل',
+      logo: 'لوگو',
+      other: 'سایر'
+    };
+
+    async function loadProducts() {
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'getProducts', role: 'visitor', username: '' })
+        });
+        const data = await res.json();
+        const grid = document.getElementById('productsGrid');
+
+        if (data.result === 'success' && data.data.products.length > 0) {
+          const available = data.data.products.filter(p => p.status !== 'sold');
+          
+          if (available.length === 0) {
+            grid.innerHTML = `
+              <div class="empty-state">
+                <i class="fa-solid fa-box-open"></i>
+                <p>در حال حاضر محصولی موجود نیست.</p>
+              </div>`;
+            return;
+          }
+
+          grid.innerHTML = available.map(p => `
+            <div class="product-card" onclick="goToProduct('${p.product_id}')">
+              <img src="${p.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" 
+                   alt="${p.name}" 
+                   class="product-image"
+                   onerror="this.src='https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'">
+              <div class="product-info">
+                <div class="product-name">${p.name}</div>
+                <div class="product-meta">
+                  <span class="product-category">${categoryLabels[p.category] || p.category || 'سایر'}</span>
+                  <span class="product-price">${Number(p.price).toLocaleString('fa-IR')} <span>تومان</span></span>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          grid.innerHTML = `
+            <div class="empty-state">
+              <i class="fa-solid fa-box-open"></i>
+              <p>هنوز محصولی ثبت نشده است.</p>
+            </div>`;
+        }
+      } catch(e) {
+        console.error(e);
+        document.getElementById('productsGrid').innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>خطا در بارگذاری محصولات</p>
+          </div>`;
+      }
+    }
+
+    function goToProduct(productId) {
+      localStorage.setItem('qm_selected_product', productId);
+      window.location.href = 'shop.html';
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
