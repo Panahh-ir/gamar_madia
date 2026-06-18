@@ -213,9 +213,47 @@
     /* ========== FOOTER ========== */
     .footer {
       text-align: center;
-      padding: 20px;
-      color: #b8a48e;
+      padding: 24px 20px;
+      background: var(--white);
+      margin-top: 20px;
+      border-top: 1px solid #f0e8dc;
+    }
+
+    .footer-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-stat i {
+      font-size: 18px;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+
+    .footer-stat span {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .footer-stat small {
+      font-size: 10px;
+      color: #a08b73;
+    }
+
+    .footer-text {
       font-size: 11px;
+      color: #b8a48e;
     }
 
     /* ========== TABLET ========== */
@@ -291,11 +329,28 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p><i class="fa-solid fa-star-and-crescent"></i> رسانه هنری قمر — کلیه حقوق محفوظ است</p>
+    <div class="footer-stats">
+      <div class="footer-stat">
+        <i class="fa-solid fa-eye"></i>
+        <span id="footerVisits">0</span>
+        <small>بازدید</small>
+      </div>
+      <div class="footer-stat">
+        <i class="fa-solid fa-heart"></i>
+        <span id="footerLikes">0</span>
+        <small>لایک</small>
+      </div>
+      <div class="footer-stat">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="footerOrders">0</span>
+        <small>سفارش</small>
+      </div>
+    </div>
+    <p class="footer-text"><i class="fa-solid fa-star-and-crescent"></i> رسانه هنری قمر — کلیه حقوق محفوظ است</p>
   </footer>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbyYFS0EPvyg2nvcniO9F4qpomgp6S4Dxi3YOy1nDhSHKppft5fvCPU9Gb2TmOR3Odxbog/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbzPc09WqLHljWVha4stGqdXqayzbz96M0C6FaRPSYyTzr47a7BKI6lV60BkmZx6r6wJ2g/exec';
 
     const categoryLabels = {
       poster: 'پوستر',
@@ -363,7 +418,23 @@
       window.location.href = 'shop.html';
     }
 
+    async function loadFooterStats() {
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'getStats' })
+        });
+        const data = await res.json();
+        if (data.result === 'success') {
+          document.getElementById('footerVisits').textContent = (data.data.visits || 0).toLocaleString('fa-IR');
+          document.getElementById('footerLikes').textContent = (data.data.likes || 0).toLocaleString('fa-IR');
+          document.getElementById('footerOrders').textContent = (data.data.orders || 0).toLocaleString('fa-IR');
+        }
+      } catch(e) { console.error(e); }
+    }
+
     loadProducts();
+    loadFooterStats();
   </script>
 </body>
 </html>
