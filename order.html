@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رسانه هنری قمر | ثبت سفارش</title>
+  <title>رسانه هنری قمر | سفارشات من</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,6 +19,7 @@
       --white: #ffffff;
       --green: #27ae60;
       --red: #c0392b;
+      --blue: #2980b9;
     }
 
     body {
@@ -72,35 +73,56 @@
       font-weight: 700; color: var(--dark); font-size: 16px;
     }
 
+    .header-logout {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+
     /* ========== CONTAINER ========== */
     .container {
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
       padding: 24px 20px;
     }
 
-    .page-title {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 6px;
+    /* ========== TABS ========== */
+    .tabs {
+      display: flex;
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
     }
 
-    .page-subtitle {
+    .tab {
+      flex: 1;
+      padding: 14px;
       text-align: center;
-      font-size: 13px;
-      color: #a08b73;
-      margin-bottom: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: var(--white);
+      border: none;
+      font-family: inherit;
+      color: #b8a48e;
     }
 
-    .separator {
-      width: 50px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 20px;
-      border-radius: 1px;
+    .tab.active {
+      background: var(--brown);
+      color: var(--white);
     }
+
+    .tab:first-child { border-left: 1px solid #f0e8dc; }
 
     /* ========== FORM CARD ========== */
     .form-card {
@@ -110,25 +132,30 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
 
+    .form-card h2 {
+      font-size: 20px;
+      color: var(--dark);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .form-card .subtitle {
+      font-size: 13px;
+      color: #a08b73;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      display: block;
       font-size: 13px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 6px;
-    }
-
-    .form-group label i {
-      color: var(--brown);
-      font-size: 12px;
-      width: 16px;
-      text-align: center;
     }
 
     .form-group input,
@@ -154,14 +181,11 @@
       box-shadow: 0 0 0 4px rgba(200,175,147,0.1);
     }
 
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #c4b6a6;
-    }
+    .form-group input::placeholder { color: #c4b6a6; }
 
     .form-group textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 100px;
     }
 
     .form-group select {
@@ -173,126 +197,177 @@
       padding-left: 40px;
     }
 
-    .form-group select option {
-      color: var(--dark);
-      background: var(--white);
-    }
-
-    .required-star {
-      color: var(--red);
-      font-size: 12px;
-    }
-
-    /* ========== MESSAGES ========== */
     .error-message {
       display: none;
       color: var(--red);
       font-size: 12px;
-      margin-top: 12px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       background: #fdf0ee;
-      border-radius: 10px;
+      border-radius: 8px;
       border: 1px solid #f5d6d3;
       text-align: center;
+      margin-bottom: 12px;
     }
 
-    .success-box {
+    .success-message {
       display: none;
-      text-align: center;
-      padding: 32px 20px;
-    }
-
-    .success-box .success-icon {
-      width: 72px;
-      height: 72px;
-      background: #eafaf1;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 16px;
-    }
-
-    .success-box .success-icon i {
-      font-size: 32px;
       color: var(--green);
+      font-size: 12px;
+      padding: 10px 14px;
+      background: #eafaf1;
+      border-radius: 8px;
+      border: 1px solid #a9dfbf;
+      text-align: center;
+      margin-bottom: 12px;
     }
 
-    .success-box h2 {
-      font-size: 20px;
-      color: var(--dark);
-      margin-bottom: 8px;
-    }
-
-    .success-box p {
-      font-size: 14px;
-      color: #a08b73;
-      margin-bottom: 20px;
-    }
-
-    /* ========== BUTTONS ========== */
-    .btn-submit {
+    .btn {
       width: 100%;
-      padding: 15px;
-      background: linear-gradient(145deg, var(--brown), #6d553b);
-      color: var(--white);
+      padding: 14px;
       border: none;
       border-radius: 12px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
       transition: all 0.3s ease;
-      margin-top: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
 
-    .btn-submit:hover {
+    .btn-primary {
+      background: linear-gradient(145deg, var(--brown), #6d553b);
+      color: var(--white);
+    }
+    .btn-primary:hover {
       background: linear-gradient(145deg, #7d6343, #5e4932);
-      box-shadow: 0 4px 16px rgba(107,83,59,0.25);
       transform: translateY(-1px);
     }
-
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-
-    .btn-submit:disabled {
+    .btn-primary:disabled {
       background: #c4b6a6;
       cursor: not-allowed;
       transform: none;
-      box-shadow: none;
+    }
+    .btn-green {
+      background: linear-gradient(145deg, #27ae60, #219a52);
+      color: var(--white);
+    }
+    .btn-green:hover {
+      background: linear-gradient(145deg, #219a52, #1e8449);
+    }
+    .btn-sm {
+      width: auto;
+      padding: 10px 20px;
+      font-size: 13px;
     }
 
-    .btn-back-menu {
-      display: inline-flex;
+    /* ========== ORDERS LIST ========== */
+    .orders-section {
+      display: none;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-header h2 {
+      font-size: 20px;
+      color: var(--dark);
+    }
+
+    .order-card {
       background: var(--white);
-      color: var(--brown);
-      border: 1.5px solid var(--gold);
-      border-radius: 10px;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+
+    .order-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .order-id {
+      font-size: 12px;
+      color: #a08b73;
+    }
+    .badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .badge-pending { background: #fef9e7; color: #f39c12; }
+    .badge-progress { background: #eaf2f8; color: var(--blue); }
+    .badge-delivered { background: #eafaf1; color: var(--green); }
+
+    .order-type {
       font-size: 14px;
       font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .order-desc {
+      font-size: 12px;
+      color: #6b5b4a;
+      margin-bottom: 8px;
+    }
+    .order-date {
+      font-size: 11px;
+      color: #b8a48e;
+    }
+    .order-file a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--brown);
       text-decoration: none;
-      transition: all 0.3s ease;
+      margin-top: 8px;
     }
 
-    .btn-back-menu:hover {
-      background: var(--milk);
+    .no-orders {
+      text-align: center;
+      padding: 40px 20px;
+      color: #b8a48e;
+    }
+    .no-orders i {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
     }
 
-    /* ========== RESPONSIVE ========== */
+    /* ========== NEW ORDER FORM ========== */
+    .new-order-section {
+      display: none;
+    }
+
+    .section-title-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-title-bar button {
+      background: none;
+      border: none;
+      color: var(--brown);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
     @media (max-width: 600px) {
       .container { padding: 16px 12px; }
       .form-card { padding: 20px 16px; }
-      .page-title { font-size: 20px; }
     }
   </style>
 </head>
@@ -308,139 +383,404 @@
       <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="لوگو">
       <span>رسانه هنری قمر</span>
     </div>
-    <div style="width:60px;"></div>
+    <button class="header-logout" id="logoutBtn" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> خروج
+    </button>
   </header>
 
-  <!-- CONTAINER -->
   <div class="container">
-    <h1 class="page-title">ثبت سفارش اختصاصی</h1>
-    <p class="page-subtitle">طرح مورد نظر خود را توضیح دهید، ما می‌سازیم</p>
-    <div class="separator"></div>
 
-    <!-- FORM -->
-    <div class="form-card" id="formCard">
-      <form id="orderForm">
-        <div class="form-group">
-          <label>
-            <i class="fa-solid fa-user"></i>
-            نام و نام خانوادگی
-            <span class="required-star">*</span>
-          </label>
-          <input type="text" id="customerName" placeholder="نام کامل خود را وارد کنید" required>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <i class="fa-solid fa-phone"></i>
-            راه ارتباطی
-            <span class="required-star">*</span>
-          </label>
-          <input type="text" id="customerContact" placeholder="آیدی یا شماره تلفن فعال در «ایتا»" required>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <i class="fa-solid fa-palette"></i>
-            نوع کار
-            <span class="required-star">*</span>
-          </label>
-          <select id="workType" required>
-            <option value="">-- انتخاب کنید --</option>
-            <option value="poster">پوستر</option>
-            <option value="typography">تایپوگرافی</option>
-            <option value="profile">پروفایل</option>
-            <option value="logo">لوگو</option>
-            <option value="other">سایر</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <i class="fa-solid fa-pen-to-square"></i>
-            توضیحات طرح
-            <span class="required-star">*</span>
-          </label>
-          <textarea id="description" placeholder="لطفاً توضیح دهید چه طرحی مد نظر شماست...&#10;&#10;مثلاً: رنگ‌بندی، سبک، ابعاد، متن مورد نظر، و هر نکنه دیگه‌ای که به طراح کمک کنه." required></textarea>
-        </div>
-
-        <div class="error-message" id="errorMessage"></div>
-
-        <button type="submit" class="btn-submit" id="submitBtn">
-          <i class="fa-solid fa-paper-plane"></i>
-          ثبت سفارش
-        </button>
-      </form>
-    </div>
-
-    <!-- SUCCESS -->
-    <div class="success-box" id="successBox">
-      <div class="success-icon">
-        <i class="fa-solid fa-check"></i>
+    <!-- ========== AUTH SECTION ========== -->
+    <div id="authSection">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('login')">ورود</button>
+        <button class="tab" id="registerTabBtn" onclick="switchTab('register')">ثبت‌نام</button>
       </div>
-      <h2>سفارش شما ثبت شد!</h2>
-      <p>به زودی با شما تماس می‌گیریم.</p>
-      <a href="menu.html" class="btn-back-menu">
-        <i class="fa-solid fa-arrow-right"></i>
-        بازگشت به منوی محصولات
-      </a>
+
+      <!-- Login Form -->
+      <div class="form-card" id="loginForm">
+        <h2><i class="fa-solid fa-right-to-bracket"></i> ورود</h2>
+        <p class="subtitle">به حساب کاربری خود وارد شوید</p>
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label>نام کاربری</label>
+            <input type="text" id="loginUsername" placeholder="نام کاربری" required>
+          </div>
+          <div class="form-group">
+            <label>رمز عبور</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" required>
+          </div>
+          <div class="error-message" id="loginError"></div>
+          <button type="submit" class="btn btn-primary" id="loginBtn">
+            <i class="fa-solid fa-right-to-bracket"></i> ورود
+          </button>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="form-card" id="registerForm" style="display:none;">
+        <h2><i class="fa-solid fa-user-plus"></i> ثبت‌نام</h2>
+        <p class="subtitle">حساب جدید بسازید</p>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label>نام و نام خانوادگی</label>
+            <input type="text" id="regName" placeholder="نام کامل" required>
+          </div>
+          <div class="form-group">
+            <label>راه ارتباطی (آیدی یا شماره ایتا)</label>
+            <input type="text" id="regContact" placeholder="آیدی یا شماره در ایتا" required>
+          </div>
+          <div class="form-group">
+            <label>نام کاربری</label>
+            <input type="text" id="regUsername" placeholder="نام کاربری" required>
+          </div>
+          <div class="form-group">
+            <label>رمز عبور</label>
+            <input type="password" id="regPassword" placeholder="حداقل ۴ کاراکتر" required minlength="4">
+          </div>
+          <div class="error-message" id="regError"></div>
+          <div class="success-message" id="regSuccess"></div>
+          <button type="submit" class="btn btn-primary" id="regBtn">
+            <i class="fa-solid fa-user-plus"></i> ثبت‌نام
+          </button>
+        </form>
+      </div>
     </div>
+
+    <!-- ========== ORDERS SECTION ========== -->
+    <div class="orders-section" id="ordersSection">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-clipboard-list"></i> سفارش‌های من</h2>
+        <button class="btn btn-green btn-sm" onclick="showNewOrder()">
+          <i class="fa-solid fa-plus"></i> سفارش جدید
+        </button>
+      </div>
+      <div id="ordersList"></div>
+    </div>
+
+    <!-- ========== NEW ORDER SECTION ========== -->
+    <div class="new-order-section" id="newOrderSection">
+      <div class="section-title-bar">
+        <button onclick="backToOrders()"><i class="fa-solid fa-arrow-right"></i></button>
+        <h2>ثبت سفارش جدید</h2>
+      </div>
+      <div class="form-card">
+        <form onsubmit="handleNewOrder(event)">
+          <div class="form-group">
+            <label>نوع کار</label>
+            <select id="newWorkType" required>
+              <option value="">-- انتخاب کنید --</option>
+              <option value="poster">پوستر</option>
+              <option value="typography">تایپوگرافی</option>
+              <option value="profile">پروفایل</option>
+              <option value="logo">لوگو</option>
+              <option value="other">سایر</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>توضیحات طرح</label>
+            <textarea id="newDescription" placeholder="توضیح دهید چه طرحی می‌خواهید..." required></textarea>
+          </div>
+          <div class="error-message" id="newOrderError"></div>
+          <div class="success-message" id="newOrderSuccess"></div>
+          <button type="submit" class="btn btn-green" id="newOrderBtn">
+            <i class="fa-solid fa-paper-plane"></i> ثبت سفارش
+          </button>
+        </form>
+      </div>
+    </div>
+
   </div>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbzPc09WqLHljWVha4stGqdXqayzbz96M0C6FaRPSYyTzr47a7BKI6lV60BkmZx6r6wJ2g/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz5bgE8eHsGKZCTWiM21-kmqoEkB7XpYoFkw7iFqCy7fCUXaOWc7bkoBY1OG7ZCud_hPg/exec';
 
-    document.getElementById('orderForm').addEventListener('submit', async function(e) {
+    let currentCustomer = null;
+    const workTypeLabels = {
+      poster: 'پوستر',
+      typography: 'تایپوگرافی',
+      profile: 'پروفایل',
+      logo: 'لوگو',
+      other: 'سایر'
+    };
+
+    // ========== INIT ==========
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('qm_customer');
+      if (saved) {
+        try {
+          currentCustomer = JSON.parse(saved);
+          showOrdersSection();
+        } catch(e) {
+          localStorage.removeItem('qm_customer');
+        }
+      }
+    });
+
+    // ========== TAB SWITCH ==========
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'none';
+      
+      if (tab === 'login') {
+        document.querySelector('.tab:first-child').classList.add('active');
+        document.getElementById('loginForm').style.display = 'block';
+      } else {
+        document.getElementById('registerTabBtn').classList.add('active');
+        document.getElementById('registerForm').style.display = 'block';
+      }
+    }
+
+    // ========== LOGIN ==========
+    async function handleLogin(e) {
       e.preventDefault();
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const errorDiv = document.getElementById('loginError');
+      const btn = document.getElementById('loginBtn');
 
-      const errorDiv = document.getElementById('errorMessage');
-      const submitBtn = document.getElementById('submitBtn');
+      if (!username || !password) return;
 
-      // Validate
-      const name = document.getElementById('customerName').value.trim();
-      const contact = document.getElementById('customerContact').value.trim();
-      const workType = document.getElementById('workType').value;
-      const description = document.getElementById('description').value.trim();
+      errorDiv.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
 
-      if (!name || !contact || !workType || !description) {
-        errorDiv.textContent = 'لطفاً تمام فیلدهای الزامی را پر کنید.';
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'customerLogin', username, password })
+        });
+        const data = await res.json();
+
+        if (data.result === 'success') {
+          currentCustomer = data.data;
+          localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
+          showOrdersSection();
+        } else {
+          errorDiv.textContent = data.message || 'نام کاربری یا رمز عبور اشتباه است';
+          errorDiv.style.display = 'block';
+        }
+      } catch(e) {
+        errorDiv.textContent = 'خطا در ارتباط با سرور';
         errorDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> ورود';
+      }
+    }
+
+    // ========== REGISTER ==========
+    async function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const contact = document.getElementById('regContact').value.trim();
+      const username = document.getElementById('regUsername').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const errorDiv = document.getElementById('regError');
+      const successDiv = document.getElementById('regSuccess');
+      const btn = document.getElementById('regBtn');
+
+      if (!name || !contact || !username || !password) return;
+
+      errorDiv.style.display = 'none';
+      successDiv.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت‌نام...';
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'customerRegister', username, password, name, contact })
+        });
+        const data = await res.json();
+
+        if (data.result === 'success') {
+          successDiv.textContent = 'ثبت‌نام با موفقیت انجام شد! حالا می‌توانید وارد شوید.';
+          successDiv.style.display = 'block';
+          document.getElementById('regName').value = '';
+          document.getElementById('regContact').value = '';
+          document.getElementById('regUsername').value = '';
+          document.getElementById('regPassword').value = '';
+          setTimeout(() => switchTab('login'), 1500);
+        } else {
+          errorDiv.textContent = data.message || 'خطا در ثبت‌نام';
+          errorDiv.style.display = 'block';
+        }
+      } catch(e) {
+        errorDiv.textContent = 'خطا در ارتباط با سرور';
+        errorDiv.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> ثبت‌نام';
+      }
+    }
+
+    // ========== LOGOUT ==========
+    function logout() {
+      localStorage.removeItem('qm_customer');
+      currentCustomer = null;
+      document.getElementById('authSection').style.display = 'block';
+      document.getElementById('ordersSection').style.display = 'none';
+      document.getElementById('newOrderSection').style.display = 'none';
+      document.getElementById('logoutBtn').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('registerForm').style.display = 'none';
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.tab:first-child').classList.add('active');
+    }
+
+    // ========== SHOW SECTIONS ==========
+    function showOrdersSection() {
+      document.getElementById('authSection').style.display = 'none';
+      document.getElementById('ordersSection').style.display = 'block';
+      document.getElementById('newOrderSection').style.display = 'none';
+      document.getElementById('logoutBtn').style.display = 'flex';
+      loadMyOrders();
+    }
+
+    function showNewOrder() {
+      document.getElementById('ordersSection').style.display = 'none';
+      document.getElementById('newOrderSection').style.display = 'block';
+      document.getElementById('newOrderError').style.display = 'none';
+      document.getElementById('newOrderSuccess').style.display = 'none';
+    }
+
+    function backToOrders() {
+      document.getElementById('newOrderSection').style.display = 'none';
+      document.getElementById('ordersSection').style.display = 'block';
+      loadMyOrders();
+    }
+
+    // ========== LOAD ORDERS ==========
+    async function loadMyOrders() {
+      const container = document.getElementById('ordersList');
+      
+      if (!currentCustomer || !currentCustomer.orders) {
+        container.innerHTML = `
+          <div class="no-orders">
+            <i class="fa-solid fa-inbox"></i>
+            <p>هنوز سفارشی ثبت نکرده‌اید.</p>
+          </div>`;
         return;
       }
 
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'getOrders' })
+        });
+        const data = await res.json();
+
+        if (data.result === 'success') {
+          const myOrderIds = currentCustomer.orders.split(',').map(o => o.trim());
+          const myOrders = data.data.orders.filter(o => myOrderIds.includes(o.order_id));
+
+          if (myOrders.length === 0) {
+            container.innerHTML = `
+              <div class="no-orders">
+                <i class="fa-solid fa-inbox"></i>
+                <p>هنوز سفارشی ثبت نکرده‌اید.</p>
+              </div>`;
+            return;
+          }
+
+          container.innerHTML = myOrders.reverse().map(o => {
+            const statusMap = {
+              pending: ['badge-pending', 'در انتظار'],
+              in_progress: ['badge-progress', 'در حال انجام'],
+              delivered: ['badge-delivered', 'تحویل داده شد']
+            };
+            const [badgeClass, statusText] = statusMap[o.status] || ['badge-pending', 'در انتظار'];
+
+            return `
+              <div class="order-card">
+                <div class="order-card-header">
+                  <span class="order-id">#${o.order_id}</span>
+                  <span class="badge ${badgeClass}">${statusText}</span>
+                </div>
+                <div class="order-type">${workTypeLabels[o.description] || o.description || 'نامشخص'}</div>
+                <div class="order-desc">${o.description || 'بدون توضیح'}</div>
+                <div class="order-date">${o.date_submitted || '-'}</div>
+                ${o.file_link ? `
+                  <div class="order-file">
+                    <a href="${o.file_link}" target="_blank">
+                      <i class="fa-solid fa-download"></i> دانلود فایل تحویلی
+                    </a>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }).join('');
+        }
+      } catch(e) {
+        console.error(e);
+        container.innerHTML = '<p>خطا در بارگذاری سفارشات</p>';
+      }
+    }
+
+    // ========== NEW ORDER ==========
+    async function handleNewOrder(e) {
+      e.preventDefault();
+      const workType = document.getElementById('newWorkType').value;
+      const description = document.getElementById('newDescription').value.trim();
+      const errorDiv = document.getElementById('newOrderError');
+      const successDiv = document.getElementById('newOrderSuccess');
+      const btn = document.getElementById('newOrderBtn');
+
+      if (!workType || !description) return;
+
       errorDiv.style.display = 'none';
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت سفارش...';
+      successDiv.style.display = 'none';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت...';
 
       try {
         const res = await fetch(API_URL, {
           method: 'POST',
           body: JSON.stringify({
             action: 'addOrder',
-            customer_name: name,
-            contact: contact,
+            customer_name: currentCustomer.name,
+            contact: currentCustomer.contact,
             work_type: workType,
             description: description
           })
         });
-
         const data = await res.json();
 
         if (data.result === 'success') {
-          // Show success
-          document.getElementById('formCard').style.display = 'none';
-          document.getElementById('successBox').style.display = 'block';
+          const orderId = data.data.order_id;
+          const updatedOrders = currentCustomer.orders ? currentCustomer.orders + ', ' + orderId : orderId;
+          currentCustomer.orders = updatedOrders;
+          localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
+
+          await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              action: 'updateCustomerOrders',
+              customer_id: currentCustomer.customer_id,
+              orders: updatedOrders
+            })
+          });
+
+          successDiv.textContent = 'سفارش با موفقیت ثبت شد!';
+          successDiv.style.display = 'block';
+          document.getElementById('newWorkType').value = '';
+          document.getElementById('newDescription').value = '';
+
+          setTimeout(() => backToOrders(), 1500);
         } else {
-          errorDiv.textContent = data.message || 'خطا در ثبت سفارش. لطفاً دوباره تلاش کنید.';
+          errorDiv.textContent = data.message || 'خطا در ثبت سفارش';
           errorDiv.style.display = 'block';
         }
       } catch(e) {
-        errorDiv.textContent = 'خطا در ارتباط با سرور. لطفاً اتصال اینترنت را بررسی کنید.';
+        errorDiv.textContent = 'خطا در ارتباط با سرور';
         errorDiv.style.display = 'block';
       } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> ثبت سفارش';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> ثبت سفارش';
       }
-    });
+    }
   </script>
 </body>
 </html>
