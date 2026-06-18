@@ -740,7 +740,13 @@
             <tr>
               <td>${o.order_id}</td>
               <td>${o.customer_name}</td>
-              <td>${o.contact}</td>
+              <td>
+                ${o.contact ? `
+                  <button class="btn btn-xs btn-outline" style="padding:4px 8px;font-size:10px;white-space:nowrap;" onclick="showDescription('${(o.contact || '').replace(/'/g, "\\'")}')">
+                    <i class="fa-solid fa-address-book"></i>
+                  </button>
+                ` : '<span style="color:#c4b6a6;font-size:11px;">—</span>'}
+              </td>
               <td><span class="badge ${o.payment_status === 'paid' ? 'badge-success' : 'badge-danger'}">${o.payment_status === 'paid' ? 'پرداخت شده' : 'پرداخت نشده'}</span></td>
               <td>
                 ${o.description ? `
