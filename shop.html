@@ -478,7 +478,9 @@
     }
 
     function buyProduct(productId, productName) {
-      alert('درخواست خرید برای: ' + productName + '\nکد محصول: ' + productId + '\n\nبخش پرداخت به زودی اضافه می‌شود.');
+      localStorage.setItem('qm_buy_product', productId);
+      localStorage.setItem('qm_buy_product_name', productName);
+      window.location.href = 'pay.html';
     }
 
     loadProduct();
