@@ -21,106 +21,60 @@
       background: var(--white); box-shadow: 0 2px 16px rgba(0,0,0,0.04);
       padding: 14px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100;
     }
-    .header-back {
-      display: flex; align-items: center; gap: 6px; color: var(--brown);
-      font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none;
-    }
+    .header-back { display: flex; align-items: center; gap: 6px; color: var(--brown); font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
     .header-back:hover { color: var(--dark); }
-    .header-logo-small {
-      display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center;
-    }
+    .header-logo-small { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center; }
     .header-logo-small img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
     .header-logo-small span { font-weight: 700; color: var(--dark); font-size: 16px; }
     .container { max-width: 600px; margin: 0 auto; padding: 24px 20px; }
 
-    .tabs {
-      display: flex; background: var(--white); border-radius: 14px;
-      overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-    }
-    .tab {
-      flex: 1; padding: 14px; text-align: center; font-size: 14px; font-weight: 600;
-      cursor: pointer; background: var(--white); border: none; font-family: inherit;
-      color: #b8a48e; transition: all 0.3s ease;
-    }
+    .tabs { display: flex; background: var(--white); border-radius: 14px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+    .tab { flex: 1; padding: 14px; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; background: var(--white); border: none; font-family: inherit; color: #b8a48e; transition: all 0.3s ease; }
     .tab.active { background: var(--brown); color: var(--white); }
     .tab:first-child { border-left: 1px solid #f0e8dc; }
 
-    .form-card {
-      background: var(--white); border-radius: 20px; padding: 28px 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
+    .form-card { background: var(--white); border-radius: 20px; padding: 28px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
     .form-card h2 { font-size: 20px; color: var(--dark); margin-bottom: 6px; text-align: center; }
     .form-card .subtitle { font-size: 13px; color: #a08b73; text-align: center; margin-bottom: 20px; }
     .form-group { margin-bottom: 16px; }
     .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-    .form-group input {
-      width: 100%; padding: 12px 16px; border: 1.5px solid #e5ddd3; border-radius: 12px;
-      font-size: 14px; color: var(--dark); background: #fdfaf6; outline: none; font-family: inherit;
-    }
+    .form-group input { width: 100%; padding: 12px 16px; border: 1.5px solid #e5ddd3; border-radius: 12px; font-size: 14px; color: var(--dark); background: #fdfaf6; outline: none; font-family: inherit; }
     .form-group input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200,175,147,0.1); }
-    .error-message {
-      display: none; color: var(--red); font-size: 12px; padding: 10px 14px;
-      background: #fdf0ee; border-radius: 8px; text-align: center; margin-bottom: 12px;
-    }
-    .success-message {
-      display: none; color: var(--green); font-size: 12px; padding: 10px 14px;
-      background: #eafaf1; border-radius: 8px; text-align: center; margin-bottom: 12px;
-    }
-    .btn {
-      width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 14px;
-      font-weight: 600; cursor: pointer; font-family: inherit; display: flex;
-      align-items: center; justify-content: center; gap: 8px; transition: all 0.3s;
-    }
-    .btn-primary {
-      background: linear-gradient(145deg, var(--brown), #6d553b); color: var(--white);
-    }
+    .error-message { display: none; color: var(--red); font-size: 12px; padding: 10px 14px; background: #fdf0ee; border-radius: 8px; text-align: center; margin-bottom: 12px; }
+    .success-message { display: none; color: var(--green); font-size: 12px; padding: 10px 14px; background: #eafaf1; border-radius: 8px; text-align: center; margin-bottom: 12px; }
+    .btn { width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s; }
+    .btn-primary { background: linear-gradient(145deg, var(--brown), #6d553b); color: var(--white); }
     .btn-primary:disabled { background: #c4b6a6; cursor: not-allowed; }
-    .btn-green {
-      background: linear-gradient(145deg, #27ae60, #219a52); color: var(--white);
-    }
+    .btn-green { background: linear-gradient(145deg, #27ae60, #219a52); color: var(--white); }
     .btn-green:hover { background: linear-gradient(145deg, #219a52, #1e8449); }
-    .btn-outline {
-      background: transparent; border: 1px solid var(--gold); color: var(--brown);
-    }
+    .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--brown); }
 
-    .product-preview {
-      background: var(--white); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 20px;
-    }
-    .product-preview img {
-      width: 100%; max-height: 280px; object-fit: contain; background: var(--milk);
-    }
+    .product-preview { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 20px; }
+    .product-preview img { width: 100%; max-height: 280px; object-fit: contain; background: var(--milk); }
     .product-preview-info { padding: 16px 20px; }
     .product-preview-info h3 { font-size: 18px; color: var(--dark); margin-bottom: 8px; }
     .product-preview-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .preview-category {
-      font-size: 12px; color: var(--brown); background: var(--milk);
-      padding: 4px 12px; border-radius: 20px;
-    }
+    .preview-category { font-size: 12px; color: var(--brown); background: var(--milk); padding: 4px 12px; border-radius: 20px; }
     .preview-price { font-size: 20px; font-weight: 700; color: var(--green); }
 
-    .success-box {
-      display: none; text-align: center; padding: 32px 20px;
-    }
-    .success-box .success-icon {
-      width: 72px; height: 72px; background: #eafaf1; border-radius: 50%;
-      display: flex; justify-content: center; align-items: center; margin: 0 auto 16px;
-    }
+    .order-preview { background: var(--white); border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 20px; text-align: center; }
+    .order-preview h3 { color: var(--dark); margin-bottom: 8px; }
+    .order-preview .price { font-size: 24px; font-weight: 700; color: var(--green); }
+
+    .success-box { display: none; text-align: center; padding: 32px 20px; }
+    .success-box .success-icon { width: 72px; height: 72px; background: #eafaf1; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 16px; }
     .success-box .success-icon i { font-size: 32px; color: var(--green); }
     .success-box h2 { font-size: 20px; color: var(--dark); margin-bottom: 8px; }
     .success-box p { font-size: 14px; color: var(--dark); margin-bottom: 12px; line-height: 1.8; }
     #downloadBtnContainer { margin: 8px 0; }
 
-    @media (max-width: 600px) {
-      .container { padding: 16px 12px; }
-      .form-card { padding: 20px 16px; }
-    }
+    @media (max-width: 600px) { .container { padding: 16px 12px; } .form-card { padding: 20px 16px; } }
   </style>
 </head>
 <body>
 
   <header class="header">
-    <a href="menu.html" class="header-back"><i class="fa-solid fa-arrow-right"></i> بازگشت</a>
+    <a href="#" class="header-back" id="backBtn"><i class="fa-solid fa-arrow-right"></i> بازگشت</a>
     <div class="header-logo-small">
       <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="لوگو">
       <span>رسانه هنری قمر</span>
@@ -130,10 +84,27 @@
 
   <div class="container">
 
-    <div class="product-preview" id="productPreview">
-      <p style="text-align:center;padding:20px;">در حال بارگذاری محصول...</p>
+    <!-- PRODUCT PREVIEW -->
+    <div class="product-preview" id="productPreview" style="display:none;">
+      <img src="" alt="" id="productImg">
+      <div class="product-preview-info">
+        <h3 id="productName"></h3>
+        <div class="product-preview-meta">
+          <span class="preview-category" id="productCategory"></span>
+          <span class="preview-price" id="productPrice"></span>
+        </div>
+      </div>
     </div>
 
+    <!-- ORDER PREVIEW -->
+    <div class="order-preview" id="orderPreview" style="display:none;">
+      <h3><i class="fa-solid fa-clipboard-list"></i> پرداخت سفارش</h3>
+      <p id="orderType"></p>
+      <p id="orderDesc" style="font-size:12px;color:#a08b73;"></p>
+      <div class="price" id="orderPrice"></div>
+    </div>
+
+    <!-- AUTH -->
     <div id="authSection">
       <div class="tabs">
         <button class="tab active" onclick="switchTab('login')">ورود</button>
@@ -166,45 +137,67 @@
       </div>
     </div>
 
+    <!-- CONFIRM -->
     <div id="confirmSection" style="display:none;">
       <div class="form-card" style="text-align:center;">
-        <h2><i class="fa-solid fa-check-circle"></i> تایید خرید</h2>
+        <h2><i class="fa-solid fa-check-circle"></i> تایید پرداخت</h2>
         <p class="subtitle" id="confirmUserName"></p>
-        <p style="margin-bottom:16px;color:#a08b73;font-size:13px;">با کلیک روی دکمه زیر خرید نهایی می‌شود</p>
-        <button class="btn btn-green" onclick="goToPayment()">
-          <i class="fa-solid fa-credit-card"></i> پرداخت و دریافت فایل
-        </button>
-        <button class="btn btn-outline" style="margin-top:8px;" onclick="logoutPay()">
-          <i class="fa-solid fa-right-from-bracket"></i> خروج
-        </button>
+        <p style="margin-bottom:16px;color:#a08b73;font-size:13px;" id="confirmText">با کلیک روی دکمه زیر پرداخت نهایی می‌شود</p>
+        <button class="btn btn-green" onclick="goToPayment()"><i class="fa-solid fa-credit-card"></i> <span id="confirmBtnText">پرداخت</span></button>
+        <button class="btn btn-outline" style="margin-top:8px;" onclick="logoutPay()"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
       </div>
     </div>
 
+    <!-- SUCCESS -->
     <div class="success-box" id="successBox">
       <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-      <h2>خرید با موفقیت ثبت شد!</h2>
+      <h2 id="successTitle">پرداخت موفق!</h2>
       <p id="successText"></p>
       <div id="downloadBtnContainer"></div>
-      <a href="menu.html" class="btn btn-primary" style="display:inline-flex;width:auto;padding:12px 28px;margin-top:8px;">
-        <i class="fa-solid fa-arrow-right"></i> بازگشت به منو
-      </a>
+      <a href="menu.html" class="btn btn-primary" style="display:inline-flex;width:auto;padding:12px 28px;margin-top:8px;"><i class="fa-solid fa-arrow-right"></i> بازگشت به منو</a>
     </div>
 
   </div>
 
-  <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbw8P8cVOL4XTqFvfPhy7pYIJF211v0syTmFYjR41AAvQBUs90QZavQKjzZbQSfF5K4q7Q/exec';
+    <script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxgQN_M1UGpU8kTYs4DavSaADygrplQMXXMWaC-I8j5fUmz1wOV-gi5nvbP7MjaoJEWqA/exec';
     let currentCustomer = null;
     let selectedProduct = null;
+    let isOrderPayment = false;
+    let orderData = null;
 
-    const categoryLabels = {
-      poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر'
-    };
+    const categoryLabels = { poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر' };
 
     window.addEventListener('DOMContentLoaded', async () => {
+      // Check if it's an order payment
+      const orderId = localStorage.getItem('qm_pay_order_id');
+      if (orderId) {
+        isOrderPayment = true;
+        orderData = {
+          order_id: orderId,
+          price: localStorage.getItem('qm_pay_order_price'),
+          type: localStorage.getItem('qm_pay_order_type'),
+          desc: localStorage.getItem('qm_pay_order_desc')
+        };
+        document.getElementById('productPreview').style.display = 'none';
+        document.getElementById('orderPreview').style.display = 'block';
+        document.getElementById('orderType').textContent = 'نوع: ' + orderData.type;
+        document.getElementById('orderDesc').textContent = orderData.desc ? orderData.desc.substring(0, 80) + '...' : '';
+        document.getElementById('orderPrice').textContent = Number(orderData.price).toLocaleString('fa-IR') + ' تومان';
+        document.getElementById('backBtn').href = 'mypage.html';
+        document.getElementById('confirmBtnText').textContent = 'پرداخت سفارش';
+        document.getElementById('confirmText').textContent = 'با پرداخت این سفارش، فایل پس از آماده‌سازی قابل دانلود خواهد بود';
+        const saved = localStorage.getItem('qm_customer');
+        if (saved) { try { currentCustomer = JSON.parse(saved); showConfirm(); } catch(e) {} }
+        return;
+      }
+
+      // Product purchase
       const productId = localStorage.getItem('qm_buy_product');
+      document.getElementById('backBtn').href = 'menu.html';
       if (!productId) {
         document.getElementById('productPreview').innerHTML = '<p style="text-align:center;color:var(--red);padding:20px;">محصولی انتخاب نشده است.</p>';
+        document.getElementById('productPreview').style.display = 'block';
         return;
       }
       try {
@@ -213,27 +206,17 @@
         if (data.result === 'success') {
           selectedProduct = data.data.products.find(p => p.product_id === productId);
           if (selectedProduct) {
-            document.getElementById('productPreview').innerHTML = `
-              <img src="${selectedProduct.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" alt="${selectedProduct.name}" onerror="this.src='https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'">
-              <div class="product-preview-info">
-                <h3>${selectedProduct.name}</h3>
-                <div class="product-preview-meta">
-                  <span class="preview-category">${categoryLabels[selectedProduct.category] || selectedProduct.category}</span>
-                  <span class="preview-price">${Number(selectedProduct.price).toLocaleString('fa-IR')} تومان</span>
-                </div>
-              </div>
-            `;
+            document.getElementById('productPreview').style.display = 'block';
+            document.getElementById('productImg').src = selectedProduct.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg';
+            document.getElementById('productImg').onerror = function() { this.src = 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'; };
+            document.getElementById('productName').textContent = selectedProduct.name;
+            document.getElementById('productCategory').textContent = categoryLabels[selectedProduct.category] || selectedProduct.category;
+            document.getElementById('productPrice').textContent = Number(selectedProduct.price).toLocaleString('fa-IR') + ' تومان';
           }
         }
       } catch(e) {}
-
       const saved = localStorage.getItem('qm_customer');
-      if (saved) {
-        try {
-          currentCustomer = JSON.parse(saved);
-          showConfirm();
-        } catch(e) {}
-      }
+      if (saved) { try { currentCustomer = JSON.parse(saved); showConfirm(); } catch(e) {} }
     });
 
     function switchTab(tab) {
@@ -251,50 +234,38 @@
 
     async function handleLogin(e) {
       e.preventDefault();
-      const username = document.getElementById('loginUsername').value.trim();
-      const password = document.getElementById('loginPassword').value;
-      const errorDiv = document.getElementById('loginError');
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value;
+      const err = document.getElementById('loginError');
       const btn = document.getElementById('loginBtn');
-      errorDiv.style.display = 'none';
-      btn.disabled = true;
+      err.style.display = 'none'; btn.disabled = true;
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
-
       try {
-        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerLogin', username, password }) });
-        const data = await res.json();
-        if (data.result === 'success') {
-          currentCustomer = data.data;
-          localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
-          showConfirm();
-        } else {
-          errorDiv.textContent = data.message; errorDiv.style.display = 'block';
-        }
-      } catch(e) { errorDiv.textContent = 'خطا در ارتباط با سرور'; errorDiv.style.display = 'block'; }
+        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerLogin', username: u, password: p }) });
+        const d = await res.json();
+        if (d.result === 'success') { currentCustomer = d.data; localStorage.setItem('qm_customer', JSON.stringify(currentCustomer)); showConfirm(); }
+        else { err.textContent = d.message; err.style.display = 'block'; }
+      } catch(e) { err.textContent = 'خطا'; err.style.display = 'block'; }
       finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> ورود'; }
     }
 
     async function handleRegister(e) {
       e.preventDefault();
-      const name = document.getElementById('regName').value.trim();
-      const contact = document.getElementById('regContact').value.trim();
-      const username = document.getElementById('regUsername').value.trim();
-      const password = document.getElementById('regPassword').value;
-      const errorDiv = document.getElementById('regError');
-      const successDiv = document.getElementById('regSuccess');
+      const n = document.getElementById('regName').value.trim();
+      const c = document.getElementById('regContact').value.trim();
+      const u = document.getElementById('regUsername').value.trim();
+      const p = document.getElementById('regPassword').value;
+      const err = document.getElementById('regError');
+      const ok = document.getElementById('regSuccess');
       const btn = document.getElementById('regBtn');
-      errorDiv.style.display = 'none'; successDiv.style.display = 'none';
-      btn.disabled = true;
+      err.style.display = 'none'; ok.style.display = 'none'; btn.disabled = true;
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت‌نام...';
-
       try {
-        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerRegister', username, password, name, contact }) });
-        const data = await res.json();
-        if (data.result === 'success') {
-          successDiv.textContent = 'ثبت‌نام انجام شد! حالا وارد شوید.'; successDiv.style.display = 'block';
-          ['regName','regContact','regUsername','regPassword'].forEach(id => document.getElementById(id).value = '');
-          setTimeout(() => switchTab('login'), 1500);
-        } else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
-      } catch(e) { errorDiv.textContent = 'خطا'; errorDiv.style.display = 'block'; }
+        const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerRegister', username: u, password: p, name: n, contact: c }) });
+        const d = await res.json();
+        if (d.result === 'success') { ok.textContent = 'ثبت‌نام انجام شد! حالا وارد شوید.'; ok.style.display = 'block'; ['regName','regContact','regUsername','regPassword'].forEach(id => document.getElementById(id).value = ''); setTimeout(() => switchTab('login'), 1500); }
+        else { err.textContent = d.message; err.style.display = 'block'; }
+      } catch(e) { err.textContent = 'خطا'; err.style.display = 'block'; }
       finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> ثبت‌نام'; }
     }
 
@@ -302,7 +273,7 @@
       document.getElementById('authSection').style.display = 'none';
       document.getElementById('confirmSection').style.display = 'block';
       document.getElementById('successBox').style.display = 'none';
-      document.getElementById('confirmUserName').textContent = currentCustomer.name + ' عزیز، آماده دریافت فایل هستید';
+      document.getElementById('confirmUserName').textContent = currentCustomer.name + ' عزیز';
     }
 
     function logoutPay() {
@@ -318,47 +289,41 @@
     }
 
     async function goToPayment() {
-      if (!selectedProduct || !currentCustomer) return;
-
       const btn = document.querySelector('#confirmSection .btn-green');
       btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت خرید...';
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال پرداخت...';
 
       try {
-        await fetch(API_URL, {
-          method: 'POST',
-          body: JSON.stringify({
-            action: 'addPurchase',
-            customer_id: currentCustomer.customer_id,
-            product_id: selectedProduct.product_id,
-            product_name: selectedProduct.name,
-            price: selectedProduct.price,
-            file_link: selectedProduct.file_link
-          })
-        });
-
-        document.getElementById('confirmSection').style.display = 'none';
-        document.getElementById('successBox').style.display = 'block';
-        document.getElementById('successText').innerHTML = 
-          'محصول: <strong>' + selectedProduct.name + '</strong><br>مبلغ: <strong>' + Number(selectedProduct.price).toLocaleString('fa-IR') + ' تومان</strong>';
-
-        if (selectedProduct.file_link) {
-          document.getElementById('downloadBtnContainer').innerHTML = `
-            <a href="${selectedProduct.file_link}" download class="btn btn-green" style="display:inline-flex;width:auto;padding:12px 28px;text-decoration:none;">
-              <i class="fa-solid fa-download"></i> دانلود فایل
-            </a>
-          `;
+        if (isOrderPayment) {
+          // Pay for order
+          await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'updateOrderStatus', order_id: orderData.order_id, status: 'paid', payment_status: 'paid', price: orderData.price }) });
+          document.getElementById('confirmSection').style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+          document.getElementById('successTitle').textContent = 'پرداخت موفق!';
+          document.getElementById('successText').textContent = 'پرداخت سفارش با موفقیت انجام شد! فایل پس از آماده‌سازی توسط ادمین قابل دانلود خواهد بود.';
+          document.getElementById('downloadBtnContainer').innerHTML = '';
+          localStorage.removeItem('qm_pay_order_id');
+          localStorage.removeItem('qm_pay_order_price');
+          localStorage.removeItem('qm_pay_order_type');
+          localStorage.removeItem('qm_pay_order_desc');
+        } else {
+          // Buy product
+          await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'addPurchase', customer_id: currentCustomer.customer_id, product_id: selectedProduct.product_id, product_name: selectedProduct.name, price: selectedProduct.price, file_link: selectedProduct.file_link }) });
+          const np = selectedProduct.product_id + ':' + selectedProduct.name + ':' + selectedProduct.price;
+          currentCustomer.purchases = currentCustomer.purchases ? currentCustomer.purchases + ', ' + np : np;
+          localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
+          document.getElementById('confirmSection').style.display = 'none';
+          document.getElementById('successBox').style.display = 'block';
+          document.getElementById('successTitle').textContent = 'خرید موفق!';
+          document.getElementById('successText').innerHTML = 'محصول: <strong>' + selectedProduct.name + '</strong><br>مبلغ: <strong>' + Number(selectedProduct.price).toLocaleString('fa-IR') + ' تومان</strong>';
+          if (selectedProduct.file_link) {
+            document.getElementById('downloadBtnContainer').innerHTML = '<a href="'+selectedProduct.file_link+'" download class="btn btn-green" style="display:inline-flex;width:auto;padding:12px 28px;text-decoration:none;"><i class="fa-solid fa-download"></i> دانلود فایل</a>';
+          }
+          localStorage.removeItem('qm_buy_product');
+          localStorage.removeItem('qm_buy_product_name');
         }
-
-        localStorage.removeItem('qm_buy_product');
-        localStorage.removeItem('qm_buy_product_name');
-
-      } catch(e) {
-        alert('خطا در ارتباط با سرور');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-credit-card"></i> پرداخت و دریافت فایل';
-      }
+      } catch(e) { alert('خطا در ارتباط با سرور'); }
+      finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-credit-card"></i> <span id="confirmBtnText">پرداخت</span>'; }
     }
   </script>
 </body>
