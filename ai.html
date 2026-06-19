@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسانه هنری قمر | هوش مصنوعی</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #fdfbf7; --milk: #f5efe6; --gold: #c8af93;
+      --brown: #8b6f4e; --dark: #3e2c1c; --text: #5c4a3a; --white: #fff; --purple: #8e44ad;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #fdfbf7, #f5efe6);
+      color: var(--text); min-height: 100vh;
+    }
+    .header {
+      background: var(--white); padding: 14px 20px; display: flex;
+      align-items: center; box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .header-back { color: var(--brown); font-size: 14px; font-weight: 600; text-decoration: none; }
+    .container { max-width: 600px; margin: 0 auto; padding: 24px 20px; }
+    .card { background: var(--white); border-radius: 20px; padding: 28px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    h2 { color: var(--dark); text-align: center; margin-bottom: 8px; }
+    .subtitle { color: #a08b73; font-size: 13px; text-align: center; margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 1.5px solid #e5ddd3; border-radius: 12px;
+      font-size: 14px; background: #fdfaf6; outline: none; font-family: inherit;
+      resize: vertical; min-height: 100px;
+    }
+    .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200,175,147,0.1); }
+    .btn {
+      width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 14px;
+      font-weight: 600; cursor: pointer; font-family: inherit; display: flex;
+      align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(145deg, #8e44ad, #6c3483); color: #fff;
+    }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .result { margin-top: 20px; }
+    .result img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .tips { margin-top: 16px; font-size: 12px; color: #a08b73; }
+    .tips span { color: var(--purple); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="menu.html" class="header-back"><i class="fa-solid fa-arrow-right"></i> بازگشت</a>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2><i class="fa-solid fa-robot"></i> طراحی با هوش مصنوعی</h2>
+      <p class="subtitle">طرح مورد نظرت رو توضیح بده، هوش مصنوعی برات می‌سازه</p>
+      <form onsubmit="generateImage(event)">
+        <div class="form-group">
+          <label>توضیح طرح</label>
+          <textarea id="prompt" placeholder="مثلاً: یه پوستر مذهبی با تم محرم، رنگ مشکی و قرمز، اسم یا حسین(ع)..." required></textarea>
+        </div>
+        <button type="submit" class="btn" id="genBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> ساخت طرح
+        </button>
+      </form>
+      <div class="result" id="result"></div>
+      <div class="tips">
+        <span>نکته:</span> هر چقدر توضیح دقیق‌تر بدی، نتیجه بهتر می‌شه!
+      </div>
+    </div>
+  </div>
+  <script>
+    function generateImage(e) {
+      e.preventDefault();
+      const prompt = document.getElementById('prompt').value.trim();
+      if (!prompt) return;
+      
+      const btn = document.getElementById('genBtn');
+      const result = document.getElementById('result');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت...';
+      result.innerHTML = '<p style="text-align:center;color:#a08b73;">در حال ساخت تصویر...</p>';
+      
+      const imageUrl = 'https://image.pollinations.ai/prompt/' + encodeURIComponent(prompt) + '?width=512&height=512&nologo=true';
+      
+      const img = new Image();
+      img.onload = function() {
+        result.innerHTML = `<img src="${imageUrl}" alt="طرح ساخته شده">`;
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> ساخت دوباره';
+      };
+      img.onerror = function() {
+        result.innerHTML = '<p style="color:red;text-align:center;">خطا در ساخت تصویر. دوباره تلاش کنید.</p>';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> ساخت طرح';
+      };
+      img.src = imageUrl;
+    }
+  </script>
+</body>
+</html>
