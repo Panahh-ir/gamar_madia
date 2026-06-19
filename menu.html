@@ -31,10 +31,6 @@
       padding: 8px 14px; border-radius: 10px;
       transition: all 0.3s ease; white-space: nowrap;
     }
-    .btn-ai {
-      color: var(--purple); border: 1.5px solid var(--purple);
-    }
-    .btn-ai:hover { background: #f9f0ff; }
     .btn-profile {
       color: var(--brown); border: 1.5px solid var(--gold);
     }
@@ -74,8 +70,21 @@
     .filter-select select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,175,147,0.1); }
 
     .products-container { max-width: 1100px; margin: 0 auto; padding: 16px; }
-    .section-title { text-align: center; font-size: 20px; color: var(--dark); margin-bottom: 20px; }
+    .section-header-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .section-title { text-align: center; font-size: 20px; color: var(--dark); position: relative; }
     .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--gold); margin: 10px auto 0; border-radius: 1px; }
+    .btn-ai-section {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(145deg, #8e44ad, #6c3483);
+      color: #fff; padding: 8px 16px; border-radius: 10px;
+      text-decoration: none; font-size: 13px; font-weight: 600;
+      transition: all 0.3s ease; white-space: nowrap;
+    }
+    .btn-ai-section:hover { background: linear-gradient(145deg, #7d3c98, #5b2c6f); transform: translateY(-1px); }
+
     .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .product-card {
       background: var(--white); border-radius: 12px; overflow: hidden;
@@ -137,7 +146,6 @@
         </div>
       </div>
       <div class="header-btns">
-        <a href="ai.html" class="header-btn btn-ai"><i class="fa-solid fa-robot"></i> هوش مصنوعی</a>
         <a href="mypage.html" class="header-btn btn-profile"><i class="fa-solid fa-user"></i> صفحه شخصی</a>
       </div>
     </div>
@@ -161,7 +169,12 @@
   </div>
 
   <section class="products-container">
-    <h2 class="section-title">محصولات آماده</h2>
+    <div class="section-header-row">
+      <h2 class="section-title" style="margin-bottom:0;">محصولات آماده</h2>
+      <a href="ai.html" class="btn-ai-section">
+        <i class="fa-solid fa-robot"></i> طراحی با هوش مصنوعی
+      </a>
+    </div>
     <div class="products-grid" id="productsGrid">
       <div class="empty-state"><i class="fa-solid fa-box-open"></i><p>در حال بارگذاری محصولات...</p></div>
     </div>
