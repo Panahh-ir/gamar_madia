@@ -114,22 +114,14 @@
       <form id="loginForm">
         <div class="form-group">
           <label for="username">نام کاربری</label>
-          <div class="input-wrapper">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" id="username" placeholder="نام کاربری" required autocomplete="username">
-          </div>
+          <div class="input-wrapper"><i class="fa-solid fa-user"></i><input type="text" id="username" placeholder="نام کاربری" required autocomplete="username"></div>
         </div>
         <div class="form-group">
           <label for="password">رمز عبور</label>
-          <div class="input-wrapper">
-            <i class="fa-solid fa-lock"></i>
-            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
-          </div>
+          <div class="input-wrapper"><i class="fa-solid fa-lock"></i><input type="password" id="password" placeholder="••••••••" required autocomplete="current-password"></div>
         </div>
         <div class="error-message" id="loginError"></div>
-        <button type="submit" class="btn btn-primary" id="loginBtn">
-          <i class="fa-solid fa-right-to-bracket"></i> ورود به پنل
-        </button>
+        <button type="submit" class="btn btn-primary" id="loginBtn"><i class="fa-solid fa-right-to-bracket"></i> ورود به پنل</button>
       </form>
       <p class="footer-text"><i class="fa-solid fa-circle"></i> قمر، رسانه هنر و خلاقیت <i class="fa-solid fa-circle"></i></p>
     </div>
@@ -137,14 +129,8 @@
 
   <div class="dashboard" id="dashboardSection">
     <div class="topbar">
-      <div class="user-info">
-        <i class="fa-solid fa-user-circle"></i>
-        <span id="displayName">---</span>
-        <span class="role-badge" id="displayRole">---</span>
-      </div>
-      <button class="btn btn-sm btn-outline" onclick="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i> خروج
-      </button>
+      <div class="user-info"><i class="fa-solid fa-user-circle"></i><span id="displayName">---</span><span class="role-badge" id="displayRole">---</span></div>
+      <button class="btn btn-sm btn-outline" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
     </div>
 
     <div class="stats-row">
@@ -154,41 +140,20 @@
     </div>
 
     <div class="section" id="productsSection">
-      <div class="section-header">
-        <h2><i class="fa-solid fa-boxes-stacked"></i> لیست محصولات</h2>
-        <button class="btn btn-sm btn-primary" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> افزودن محصول</button>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead><tr><th>نام</th><th>دسته</th><th>قیمت</th><th>اضافه کننده</th><th>تاریخ</th><th>بازدید</th><th>لایک</th><th>عملیات</th></tr></thead>
-          <tbody id="productsTable"></tbody>
-        </table>
-      </div>
+      <div class="section-header"><h2><i class="fa-solid fa-boxes-stacked"></i> لیست محصولات</h2><button class="btn btn-sm btn-primary" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> افزودن محصول</button></div>
+      <div style="overflow-x:auto;"><table><thead><tr><th>نام</th><th>دسته</th><th>قیمت</th><th>اضافه کننده</th><th>تاریخ</th><th>بازدید</th><th>لایک</th><th>عملیات</th></tr></thead><tbody id="productsTable"></tbody></table></div>
       <div class="empty-state" id="productsEmpty"><i class="fa-solid fa-box-open"></i><p>هیچ محصولی ثبت نشده است.</p></div>
     </div>
 
     <div class="section" id="ordersSection">
       <div class="section-header"><h2><i class="fa-solid fa-clipboard-list"></i> لیست سفارشات</h2></div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead><tr><th>کد</th><th>مشتری</th><th>ارتباطی</th><th>پرداخت</th><th>توضیحات</th><th>نوع</th><th>تاریخ</th><th>فایل</th><th>بارگذار</th><th>وضعیت</th><th>عملیات</th></tr></thead>
-          <tbody id="ordersTable"></tbody>
-        </table>
-      </div>
+      <div style="overflow-x:auto;"><table><thead><tr><th>کد</th><th>مشتری</th><th>ارتباطی</th><th>پرداخت</th><th>توضیحات</th><th>نوع</th><th>قیمت</th><th>تاریخ</th><th>فایل</th><th>بارگذار</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="ordersTable"></tbody></table></div>
       <div class="empty-state" id="ordersEmpty"><i class="fa-solid fa-inbox"></i><p>هیچ سفارشی ثبت نشده است.</p></div>
     </div>
 
     <div class="section" id="usersSection">
-      <div class="section-header">
-        <h2><i class="fa-solid fa-users-gear"></i> مدیریت کاربران</h2>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;" id="userActionButtons"></div>
-      </div>
-      <div style="overflow-x:auto;">
-        <table>
-          <thead><tr><th>نام کاربری</th><th>نام</th><th>نقش</th><th>عملیات</th></tr></thead>
-          <tbody id="usersTable"></tbody>
-        </table>
-      </div>
+      <div class="section-header"><h2><i class="fa-solid fa-users-gear"></i> مدیریت کاربران</h2><div style="display:flex;gap:8px;flex-wrap:wrap;" id="userActionButtons"></div></div>
+      <div style="overflow-x:auto;"><table><thead><tr><th>نام کاربری</th><th>نام</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="usersTable"></tbody></table></div>
     </div>
   </div>
 
@@ -202,12 +167,8 @@
         <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="productPrice"></div>
         <div class="form-group"><label>لینک تصویر هدر</label><input type="url" id="productImage" placeholder="https://..."></div>
         <div class="form-group"><label>لینک فایل محصول</label><input type="url" id="productFile" placeholder="https://..."></div>
-        <div class="error-message" id="productError"></div>
-        <div class="success-message" id="productSuccess"></div>
-        <div class="modal-buttons">
-          <button type="button" class="btn btn-sm btn-outline" onclick="closeProductModal()">انصراف</button>
-          <button type="submit" class="btn btn-sm btn-primary">ذخیره</button>
-        </div>
+        <div class="error-message" id="productError"></div><div class="success-message" id="productSuccess"></div>
+        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeProductModal()">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
       </form>
     </div>
   </div>
@@ -218,13 +179,10 @@
       <form id="orderForm">
         <input type="hidden" id="orderEditId">
         <div class="form-group"><label>وضعیت</label><select id="orderStatus"><option value="pending">در انتظار</option><option value="in_progress">در حال انجام</option><option value="delivered">تحویل داده شد</option></select></div>
+        <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="orderPrice"></div>
         <div class="form-group"><label>لینک فایل تحویلی</label><input type="url" id="orderFileLink" placeholder="https://..."></div>
-        <div class="error-message" id="orderError"></div>
-        <div class="success-message" id="orderSuccess"></div>
-        <div class="modal-buttons">
-          <button type="button" class="btn btn-sm btn-outline" onclick="closeOrderModal()">انصراف</button>
-          <button type="submit" class="btn btn-sm btn-primary">ذخیره</button>
-        </div>
+        <div class="error-message" id="orderError"></div><div class="success-message" id="orderSuccess"></div>
+        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeOrderModal()">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
       </form>
     </div>
   </div>
@@ -238,41 +196,32 @@
         <div class="form-group"><label>رمز عبور</label><input type="password" id="newPassword" required></div>
         <div class="form-group"><label>نام</label><input type="text" id="newName" required></div>
         <div class="form-group"><label>نقش</label><select id="newRole"><option value="admin">ادمین</option><option value="super_admin">ادمین ویژه</option></select></div>
-        <div class="error-message" id="userError"></div>
-        <div class="success-message" id="userSuccess"></div>
-        <div class="modal-buttons">
-          <button type="button" class="btn btn-sm btn-outline" onclick="closeUserModal()">انصراف</button>
-          <button type="submit" class="btn btn-sm btn-primary">ذخیره</button>
-        </div>
+        <div class="error-message" id="userError"></div><div class="success-message" id="userSuccess"></div>
+        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeUserModal()">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
       </form>
     </div>
   </div>
-
-  <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycby1E5_oBz9niqfTufk9SqX1bhXkH_uIc9Eg1-c3sSDprsUTXANfjz2gkWk0SEJrmVLSvQ/exec';
+<script>
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxgQN_M1UGpU8kTYs4DavSaADygrplQMXXMWaC-I8j5fUmz1wOV-gi5nvbP7MjaoJEWqA/exec';
     let currentUser = null;
 
     const categoryLabels = {
       poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر'
     };
-
     const workTypeLabels = {
       poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر'
     };
 
     window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('qm_user');
-      if (saved) {
-        try { currentUser = JSON.parse(saved); showDashboard(); }
-        catch(e) { localStorage.removeItem('qm_user'); showLogin(); }
-      } else { showLogin(); }
+      if (saved) { try { currentUser = JSON.parse(saved); showDashboard(); } catch(e) { localStorage.removeItem('qm_user'); showLogin(); } }
+      else { showLogin(); }
     });
 
     function showLogin() {
       document.getElementById('loginSection').style.display = 'flex';
       document.getElementById('dashboardSection').classList.remove('active');
-      localStorage.removeItem('qm_user');
-      currentUser = null;
+      localStorage.removeItem('qm_user'); currentUser = null;
     }
 
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -282,20 +231,13 @@
       const errorDiv = document.getElementById('loginError');
       const loginBtn = document.getElementById('loginBtn');
       if (!username || !password) { errorDiv.textContent = 'لطفاً نام کاربری و رمز عبور را وارد کنید.'; errorDiv.style.display = 'block'; return; }
-      errorDiv.style.display = 'none';
-      loginBtn.disabled = true;
+      errorDiv.style.display = 'none'; loginBtn.disabled = true;
       loginBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
       try {
         const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'login', username, password }) });
         const result = await response.json();
-        if (result.result === 'success') {
-          currentUser = result.data;
-          localStorage.setItem('qm_user', JSON.stringify(currentUser));
-          showDashboard();
-        } else {
-          errorDiv.textContent = result.message || 'خطا در ورود';
-          errorDiv.style.display = 'block';
-        }
+        if (result.result === 'success') { currentUser = result.data; localStorage.setItem('qm_user', JSON.stringify(currentUser)); showDashboard(); }
+        else { errorDiv.textContent = result.message || 'خطا در ورود'; errorDiv.style.display = 'block'; }
       } catch(e) { errorDiv.textContent = 'خطا در ارتباط با سرور'; errorDiv.style.display = 'block'; }
       finally { loginBtn.disabled = false; loginBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> ورود به پنل'; }
     });
@@ -306,11 +248,7 @@
       document.getElementById('dashboardSection').classList.add('active');
       document.getElementById('displayName').textContent = currentUser.name;
       document.getElementById('displayRole').textContent = getRoleLabel(currentUser.role);
-      applyRoleAccess();
-      loadStats();
-      loadProducts();
-      loadOrders();
-      loadUsers();
+      applyRoleAccess(); loadStats(); loadProducts(); loadOrders(); loadUsers();
     }
 
     function logout() { showLogin(); }
@@ -368,8 +306,7 @@
                   <button class="btn btn-xs btn-danger" onclick="deleteProduct('${p.product_id}')"><i class="fa-solid fa-trash"></i></button>
                 ` : '<span class="badge badge-info">مشاهده</span>'}
               </td>
-            </tr>
-          `).join('');
+            </tr>`).join('');
         } else { empty.style.display = 'block'; tbody.innerHTML = ''; }
       } catch(e) {}
     }
@@ -387,10 +324,9 @@
       document.getElementById('productSuccess').style.display = 'none';
       document.getElementById('productForm').reset();
       document.getElementById('productEditId').value = '';
-      if (editId) { document.getElementById('productModalTitle').textContent = 'ویرایش محصول'; document.getElementById('productEditId').value = editId; }
-      else { document.getElementById('productModalTitle').textContent = 'افزودن محصول جدید'; }
+      document.getElementById('productModalTitle').textContent = editId ? 'ویرایش محصول' : 'افزودن محصول جدید';
+      if (editId) document.getElementById('productEditId').value = editId;
     }
-
     function closeProductModal() { document.getElementById('productModal').classList.remove('active'); }
     function editProduct(id) { openProductModal(id); }
 
@@ -414,11 +350,9 @@
       try {
         const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify(productData) });
         const data = await res.json();
-        if (data.result === 'success') {
-          successDiv.textContent = data.data.message; successDiv.style.display = 'block';
-          setTimeout(() => { closeProductModal(); loadProducts(); }, 1000);
-        } else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
-      } catch(e) { errorDiv.textContent = 'خطا در ارتباط با سرور'; errorDiv.style.display = 'block'; }
+        if (data.result === 'success') { successDiv.textContent = data.data.message; successDiv.style.display = 'block'; setTimeout(() => { closeProductModal(); loadProducts(); }, 1000); }
+        else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
+      } catch(e) { errorDiv.textContent = 'خطا'; errorDiv.style.display = 'block'; }
     });
 
     async function deleteProduct(id) {
@@ -443,22 +377,35 @@
           tbody.innerHTML = data.data.orders.map(o => `
             <tr>
               <td><button class="btn btn-xs btn-outline" onclick="showModalContent('کد یکتا: ${o.order_id}')"><i class="fa-solid fa-hashtag"></i></button></td>
-              <td>${o.customer_name}</td>
+              <td><button class="btn btn-xs btn-outline" onclick="showModalContent('${(o.customer_name || '-').replace(/'/g, "\\'")}')"><i class="fa-solid fa-user"></i></button></td>
               <td><button class="btn btn-xs btn-outline" onclick="showModalContent('${(o.contact || '-').replace(/'/g, "\\'")}')"><i class="fa-solid fa-address-book"></i></button></td>
               <td><span class="badge ${o.payment_status === 'paid' ? 'badge-success' : 'badge-danger'}">${o.payment_status === 'paid' ? 'پرداخت' : 'پرداخت نشده'}</span></td>
               <td><button class="btn btn-xs btn-outline" onclick="showModalContent('${(o.description || '-').replace(/'/g, "\\'").replace(/\n/g, '\\n')}')"><i class="fa-solid fa-eye"></i></button></td>
               <td>${workTypeLabels[o.work_type] || o.work_type || '-'}</td>
+              <td>${o.price ? Number(o.price).toLocaleString('fa-IR') + ' تومان' : '<button class="btn btn-xs btn-outline" onclick="setPrice(\'' + o.order_id + '\')"><i class="fa-solid fa-plus"></i> تعیین</button>'}</td>
               <td>${o.date_submitted || '-'}</td>
-              <td>${o.file_link ? '<a href="'+o.file_link+'" target="_blank"><i class="fa-solid fa-download"></i></a>' : '-'}</td>
+              <td>
+                ${o.file_link ? 
+                  (o.payment_status === 'paid' ? 
+                    '<a href="'+o.file_link+'" target="_blank"><i class="fa-solid fa-download"></i></a>' : 
+                    '<span class="badge badge-warning">در انتظار پرداخت</span>') 
+                  : '<button class="btn btn-xs btn-outline" onclick="showModalContent(\'—\')"><i class="fa-solid fa-file"></i></button>'}
+              </td>
               <td><button class="btn btn-xs btn-outline" onclick="showModalContent('${(o.uploaded_by || '-').replace(/'/g, "\\'")}')"><i class="fa-solid fa-user-pen"></i></button></td>
               <td><span class="badge ${o.status === 'delivered' ? 'badge-success' : o.status === 'in_progress' ? 'badge-info' : 'badge-warning'}">${o.status === 'delivered' ? 'تحویل' : o.status === 'in_progress' ? 'در حال انجام' : 'در انتظار'}</span></td>
               <td class="actions">
-                ${['owner','super_admin','admin'].includes(currentUser.role) ? `<button class="btn btn-xs btn-outline" onclick="editOrder('${o.order_id}')"><i class="fa-solid fa-pen"></i></button>` : '<span class="badge badge-info">مشاهده</span>'}
+                ${['owner','super_admin','admin'].includes(currentUser.role) ? `<button class="btn btn-xs btn-outline" onclick="editOrder('${o.order_id}')"><i class="fa-solid fa-pen"></i></button>` : ''}
               </td>
-            </tr>
-          `).join('');
+            </tr>`).join('');
         } else { empty.style.display = 'block'; tbody.innerHTML = ''; }
       } catch(e) {}
+    }
+
+    function setPrice(orderId) {
+      const price = prompt('قیمت سفارش را به تومان وارد کنید:');
+      if (!price || isNaN(price)) return;
+      fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'setOrderPrice', order_id: orderId, price: parseInt(price) }) })
+      .then(r => r.json()).then(d => { if (d.result === 'success') loadOrders(); else alert(d.message); });
     }
 
     function editOrder(id) {
@@ -480,14 +427,13 @@
           action: 'updateOrderStatus',
           order_id: document.getElementById('orderEditId').value,
           status: document.getElementById('orderStatus').value,
+          price: document.getElementById('orderPrice').value,
           file_link: document.getElementById('orderFileLink').value,
           uploaded_by: currentUser.name + ' (' + getRoleLabel(currentUser.role) + ')'
         })});
         const data = await res.json();
-        if (data.result === 'success') {
-          successDiv.textContent = 'وضعیت آپدیت شد'; successDiv.style.display = 'block';
-          setTimeout(() => { closeOrderModal(); loadOrders(); loadStats(); }, 1000);
-        } else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
+        if (data.result === 'success') { successDiv.textContent = 'آپدیت شد'; successDiv.style.display = 'block'; setTimeout(() => { closeOrderModal(); loadOrders(); loadStats(); }, 1000); }
+        else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
       } catch(e) { errorDiv.textContent = 'خطا'; errorDiv.style.display = 'block'; }
     });
 
@@ -504,8 +450,7 @@
               <td>${u.name}</td>
               <td><span class="badge badge-info">${getRoleLabel(u.role)}</span></td>
               <td class="actions">${getUserActions(u)}</td>
-            </tr>
-          `).join('');
+            </tr>`).join('');
         }
       } catch(e) {}
     }
@@ -546,17 +491,13 @@
       errorDiv.style.display = 'none'; successDiv.style.display = 'none';
       try {
         const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({
-          action: 'addUser',
-          username: document.getElementById('newUsername').value,
-          password: document.getElementById('newPassword').value,
-          name: document.getElementById('newName').value,
+          action: 'addUser', username: document.getElementById('newUsername').value,
+          password: document.getElementById('newPassword').value, name: document.getElementById('newName').value,
           role: document.getElementById('newRole').value
         })});
         const data = await res.json();
-        if (data.result === 'success') {
-          successDiv.textContent = 'کاربر اضافه شد'; successDiv.style.display = 'block';
-          setTimeout(() => { closeUserModal(); loadUsers(); }, 1000);
-        } else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
+        if (data.result === 'success') { successDiv.textContent = 'کاربر اضافه شد'; successDiv.style.display = 'block'; setTimeout(() => { closeUserModal(); loadUsers(); }, 1000); }
+        else { errorDiv.textContent = data.message; errorDiv.style.display = 'block'; }
       } catch(e) { errorDiv.textContent = 'خطا'; errorDiv.style.display = 'block'; }
     });
 
@@ -588,25 +529,10 @@
       } catch(e) { alert('خطا'); }
     }
 
-    // ========== MODAL CONTENT ==========
     function showModalContent(content) {
       const overlay = document.createElement('div');
       overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;justify-content:center;align-items:center;padding:20px;';
       overlay.innerHTML = `
         <div style="background:white;border-radius:16px;padding:24px;max-width:500px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.2);">
           <p style="color:#5c4a3a;line-height:1.8;font-size:14px;white-space:pre-wrap;word-break:break-word;">${content}</p>
-          <button onclick="this.closest('div').parentElement.remove()" style="margin-top:16px;padding:10px 24px;background:#8b6f4e;color:white;border:none;border-radius:8px;cursor:pointer;font-family:inherit;">
-            <i class="fa-solid fa-xmark"></i> بستن
-          </button>
-        </div>
-      `;
-      overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.remove(); });
-      document.body.appendChild(overlay);
-    }
-
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-      overlay.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
-    });
-  </script>
-</body>
-</html>
+          <button onclick="this.closest('div').parentElement.remove()" style="ma
