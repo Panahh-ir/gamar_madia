@@ -82,7 +82,7 @@
     <button class="header-logout" id="logoutBtn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
   </header>
 
-    <div class="container">
+  <div class="container">
 
     <div id="authSection">
       <div class="tabs">
@@ -147,6 +147,7 @@
 
   </div>
 
+  
   <script>
     const API_URL = 'https://script.google.com/macros/s/AKfycbxgQN_M1UGpU8kTYs4DavSaADygrplQMXXMWaC-I8j5fUmz1wOV-gi5nvbP7MjaoJEWqA/exec';
     let currentCustomer = null;
@@ -253,7 +254,7 @@
           c.innerHTML = orders.reverse().map(o => {
             const m = { pending: ['badge-pending','در انتظار'], in_progress: ['badge-progress','در حال انجام'], delivered: ['badge-delivered','تحویل داده شد'] };
             const [bc, st] = m[o.status] || ['badge-pending','در انتظار'];
-            return `<div class="card"><div class="card-header"><span class="card-id">#${o.order_id}</span><span class="badge ${bc}">${st}</span></div><div class="card-title">${workTypeLabels[o.work_type]||o.work_type||'نامشخص'}</div><div class="card-desc">${o.description||'-'}</div>${o.price?`<div class="card-desc" style="color:var(--green);font-weight:700;">${Number(o.price).toLocaleString('fa-IR')} تومان</div>`:''}<div class="card-date">${o.date_submitted||'-'}</div>${o.file_link?(o.payment_status==='paid'?`<div class="card-download"><a href="${o.file_link}" download><i class="fa-solid fa-download"></i> دانلود فایل</a></div>`:`<div class="card-desc" style="color:#f39c12;">فایل پس از پرداخت قابل دانلود است</div>`):''}</div>`;
+            return `<div class="card"><div class="card-header"><span class="card-id">#${o.order_id}</span><span class="badge ${bc}">${st}</span></div><div class="card-title">${workTypeLabels[o.work_type]||o.work_type||'نامشخص'}</div><div class="card-desc">${o.description||'-'}</div>${o.price?`<div class="card-desc" style="color:var(--green);font-weight:700;">${Number(o.price).toLocaleString('fa-IR')} تومان</div>`:''}<div class="card-date">${o.date_submitted||'-'}</div>${o.payment_status==='paid'&&o.file_link?`<div class="card-download"><a href="${o.file_link}" download><i class="fa-solid fa-download"></i> دانلود فایل</a></div>`:''}${o.price&&o.payment_status!=='paid'?`<button class="btn btn-green btn-sm" style="margin-top:8px;" onclick="payOrder('${o.order_id}',${o.price},'${(o.work_type||'سایر').replace(/'/g,"\\'")}','${(o.description||'').replace(/'/g,"\\'").replace(/\n/g,'\\n')}')"><i class="fa-solid fa-credit-card"></i> پرداخت ${Number(o.price).toLocaleString('fa-IR')} تومان</button>`:''}${!o.price&&o.payment_status!=='paid'?`<div class="card-desc" style="color:#f39c12;">در انتظار تعیین قیمت</div>`:''}</div>`;
           }).join('');
         }
       } catch(e) { c.innerHTML = '<p>خطا</p>'; }
@@ -273,6 +274,14 @@
           c.innerHTML = purchases.reverse().map(p => `<div class="card"><div class="card-header"><span class="card-id">${p.productId}</span><span class="badge badge-success">خریداری شده</span></div><div class="card-title">${p.productName}</div><div class="card-desc" style="color:var(--green);font-weight:700;">${Number(p.price).toLocaleString('fa-IR')} تومان</div>${p.file_link?`<div class="card-download"><a href="${p.file_link}" download><i class="fa-solid fa-download"></i> دانلود فایل</a></div>`:''}</div>`).join('');
         }
       } catch(e) {}
+    }
+
+    function payOrder(orderId, price, workType, description) {
+      localStorage.setItem('qm_pay_order_id', orderId);
+      localStorage.setItem('qm_pay_order_price', price);
+      localStorage.setItem('qm_pay_order_type', workType);
+      localStorage.setItem('qm_pay_order_desc', description);
+      window.location.href = 'pay.html';
     }
 
     function showNewOrder() {
