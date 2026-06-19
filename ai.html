@@ -65,8 +65,6 @@
     }
     .btn-purple { background: linear-gradient(145deg, #8e44ad, #6c3483); color: #fff; }
     .btn-purple:disabled { opacity: 0.6; cursor: not-allowed; }
-    .btn-outline { background: var(--white); border: 1.5px solid var(--purple); color: var(--purple); }
-    .btn-sm { width: auto; padding: 8px 16px; font-size: 12px; }
 
     .result { margin-top: 20px; }
     .result img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -98,7 +96,6 @@
 
   <div class="container">
 
-    <!-- PROMPT BUILDER -->
     <div class="card">
       <h2><i class="fa-solid fa-wand-magic-sparkles"></i> پرامپت‌ساز هوشمند</h2>
       <p class="subtitle">گزینه‌ها رو انتخاب کن تا پرامپت انگلیسی دقیق ساخته بشه</p>
@@ -119,17 +116,8 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fa-solid fa-droplet"></i> رنگ‌بندی اصلی</label>
-          <select id="colors" onchange="updatePrompt()">
-            <option value="">انتخاب کنید...</option>
-            <option value="black and gold">مشکی و طلایی</option>
-            <option value="dark blue and gold">آبی تیره و طلایی</option>
-            <option value="black and red">مشکی و قرمز</option>
-            <option value="green and gold">سبز و طلایی</option>
-            <option value="white and gold">سفید و طلایی</option>
-            <option value="dark purple and silver">بنفش تیره و نقره‌ای</option>
-            <option value="warm golden tones">تن‌های طلایی گرم</option>
-          </select>
+          <label><i class="fa-solid fa-droplet"></i> رنگ‌بندی</label>
+          <input type="text" id="colors" placeholder="مثلاً: black and gold, dark blue, warm red..." oninput="updatePrompt()">
         </div>
       </div>
 
@@ -158,7 +146,6 @@
         <input type="text" id="extra" placeholder="مثلاً: crescent moon, candles, dome, starry sky..." oninput="updatePrompt()">
       </div>
 
-      <!-- PROMPT PREVIEW -->
       <div class="prompt-preview" id="promptPreview">
         <small>پرامپت شما اینجا نمایش داده می‌شود...</small>
       </div>
@@ -168,7 +155,6 @@
       </button>
     </div>
 
-    <!-- RESULT -->
     <div class="card" id="resultCard" style="display:none;">
       <h2><i class="fa-solid fa-image"></i> نتیجه</h2>
       <div class="result" id="result"></div>
@@ -180,7 +166,7 @@
   <script>
     function updatePrompt() {
       const type = document.getElementById('type').value;
-      const colors = document.getElementById('colors').value;
+      const colors = document.getElementById('colors').value.trim();
       const text = document.getElementById('text').value.trim();
       const style = document.getElementById('style').value;
       const extra = document.getElementById('extra').value.trim();
