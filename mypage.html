@@ -138,8 +138,7 @@
         <form onsubmit="handleNewOrder(event)">
           <div class="form-group"><label>نوع کار</label><select id="newWorkType" required><option value="">-- انتخاب کنید --</option><option value="poster">پوستر</option><option value="typography">تایپوگرافی</option><option value="profile">پروفایل</option><option value="logo">لوگو</option><option value="other">سایر</option></select></div>
           <div class="form-group"><label>توضیحات طرح</label><textarea id="newDescription" placeholder="توضیح دهید چه طرحی می‌خواهید..." required></textarea></div>
-          <div class="error-message" id="newOrderError"></div>
-          <div class="success-message" id="newOrderSuccess"></div>
+          <div class="error-message" id="newOrderError"></div><div class="success-message" id="newOrderSuccess"></div>
           <button type="submit" class="btn btn-green"><i class="fa-solid fa-paper-plane"></i> ثبت سفارش</button>
         </form>
       </div>
@@ -147,8 +146,7 @@
 
   </div>
 
-  
-  <script>
+    <script>
     const API_URL = 'https://script.google.com/macros/s/AKfycbxgQN_M1UGpU8kTYs4DavSaADygrplQMXXMWaC-I8j5fUmz1wOV-gi5nvbP7MjaoJEWqA/exec';
     let currentCustomer = null;
     const workTypeLabels = { poster: 'پوستر', typography: 'تایپوگرافی', profile: 'پروفایل', logo: 'لوگو', other: 'سایر' };
@@ -162,36 +160,22 @@
       document.querySelectorAll('#authSection .tab').forEach(t => t.classList.remove('active'));
       document.getElementById('loginForm').style.display = 'none';
       document.getElementById('registerForm').style.display = 'none';
-      if (tab === 'login') {
-        document.querySelector('#authSection .tab:first-child').classList.add('active');
-        document.getElementById('loginForm').style.display = 'block';
-      } else {
-        document.querySelector('#authSection .tab:last-child').classList.add('active');
-        document.getElementById('registerForm').style.display = 'block';
-      }
+      if (tab === 'login') { document.querySelector('#authSection .tab:first-child').classList.add('active'); document.getElementById('loginForm').style.display = 'block'; }
+      else { document.querySelector('#authSection .tab:last-child').classList.add('active'); document.getElementById('registerForm').style.display = 'block'; }
     }
 
     function switchTab(tab) {
       document.querySelectorAll('#loggedSection .tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-      if (tab === 'orders') {
-        document.querySelector('#loggedSection .tab:first-child').classList.add('active');
-        document.getElementById('ordersContent').classList.add('active');
-      } else {
-        document.querySelector('#loggedSection .tab:last-child').classList.add('active');
-        document.getElementById('purchasesContent').classList.add('active');
-        loadMyPurchases();
-      }
+      if (tab === 'orders') { document.querySelector('#loggedSection .tab:first-child').classList.add('active'); document.getElementById('ordersContent').classList.add('active'); }
+      else { document.querySelector('#loggedSection .tab:last-child').classList.add('active'); document.getElementById('purchasesContent').classList.add('active'); loadMyPurchases(); }
     }
 
     async function handleLogin(e) {
       e.preventDefault();
-      const u = document.getElementById('loginUsername').value.trim();
-      const p = document.getElementById('loginPassword').value;
-      const err = document.getElementById('loginError');
-      const btn = document.getElementById('loginBtn');
-      err.style.display = 'none'; btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
+      const u = document.getElementById('loginUsername').value.trim(), p = document.getElementById('loginPassword').value;
+      const err = document.getElementById('loginError'), btn = document.getElementById('loginBtn');
+      err.style.display = 'none'; btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ورود...';
       try {
         const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerLogin', username: u, password: p }) });
         const d = await res.json();
@@ -203,15 +187,10 @@
 
     async function handleRegister(e) {
       e.preventDefault();
-      const n = document.getElementById('regName').value.trim();
-      const c = document.getElementById('regContact').value.trim();
-      const u = document.getElementById('regUsername').value.trim();
-      const p = document.getElementById('regPassword').value;
-      const err = document.getElementById('regError');
-      const ok = document.getElementById('regSuccess');
-      const btn = document.getElementById('regBtn');
-      err.style.display = 'none'; ok.style.display = 'none'; btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت‌نام...';
+      const n = document.getElementById('regName').value.trim(), c = document.getElementById('regContact').value.trim();
+      const u = document.getElementById('regUsername').value.trim(), p = document.getElementById('regPassword').value;
+      const err = document.getElementById('regError'), ok = document.getElementById('regSuccess'), btn = document.getElementById('regBtn');
+      err.style.display = 'none'; ok.style.display = 'none'; btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ثبت‌نام...';
       try {
         const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'customerRegister', username: u, password: p, name: n, contact: c }) });
         const d = await res.json();
@@ -254,7 +233,17 @@
           c.innerHTML = orders.reverse().map(o => {
             const m = { pending: ['badge-pending','در انتظار'], in_progress: ['badge-progress','در حال انجام'], delivered: ['badge-delivered','تحویل داده شد'] };
             const [bc, st] = m[o.status] || ['badge-pending','در انتظار'];
-            return `<div class="card"><div class="card-header"><span class="card-id">#${o.order_id}</span><span class="badge ${bc}">${st}</span></div><div class="card-title">${workTypeLabels[o.work_type]||o.work_type||'نامشخص'}</div><div class="card-desc">${o.description||'-'}</div>${o.price?`<div class="card-desc" style="color:var(--green);font-weight:700;">${Number(o.price).toLocaleString('fa-IR')} تومان</div>`:''}<div class="card-date">${o.date_submitted||'-'}</div>${o.payment_status==='paid'&&o.file_link?`<div class="card-download"><a href="${o.file_link}" download><i class="fa-solid fa-download"></i> دانلود فایل</a></div>`:''}${o.payment_status==='paid'&&!o.file_link?`<div class="card-desc" style="color:var(--green);">پرداخت شده - در انتظار بارگذاری توسط ادمین</div>`:''}${o.price&&o.payment_status!=='paid'?`<button class="btn btn-green btn-sm" style="margin-top:8px;" onclick="payOrder('${o.order_id}',${o.price},'${(o.work_type||'سایر').replace(/'/g,"\\'")}','${(o.description||'').replace(/'/g,"\\'").replace(/\n/g,'\\n')}')"><i class="fa-solid fa-credit-card"></i> پرداخت ${Number(o.price).toLocaleString('fa-IR')} تومان</button>`:''}${!o.price&&o.payment_status!=='paid'?`<div class="card-desc" style="color:#f39c12;">در انتظار تعیین قیمت</div>`:''}
+            return `<div class="card">
+              <div class="card-header"><span class="card-id">#${o.order_id}</span><span class="badge ${bc}">${st}</span></div>
+              <div class="card-title">${workTypeLabels[o.work_type]||o.work_type||'نامشخص'}</div>
+              <div class="card-desc">${o.description||'-'}</div>
+              ${o.price?`<div class="card-desc" style="color:var(--green);font-weight:700;">${Number(o.price).toLocaleString('fa-IR')} تومان</div>`:''}
+              <div class="card-date">${o.date_submitted||'-'}</div>
+              ${o.payment_status==='paid'&&o.file_link?`<div class="card-download"><a href="${o.file_link}" download><i class="fa-solid fa-download"></i> دانلود فایل</a></div>`:''}
+              ${o.payment_status==='paid'&&!o.file_link?`<div class="card-desc" style="color:var(--green);">پرداخت شده - در انتظار بارگذاری توسط ادمین</div>`:''}
+              ${o.price&&o.payment_status!=='paid'?`<button class="btn btn-green btn-sm" style="margin-top:8px;" onclick="payOrder('${o.order_id}',${o.price},'${(o.work_type||'سایر').replace(/'/g,"\\'")}','${(o.description||'').replace(/'/g,"\\'").replace(/\n/g,'\\n')}')"><i class="fa-solid fa-credit-card"></i> پرداخت ${Number(o.price).toLocaleString('fa-IR')} تومان</button>`:''}
+              ${!o.price&&o.payment_status!=='paid'?`<div class="card-desc" style="color:#f39c12;">در انتظار تعیین قیمت</div>`:''}
+            </div>`;
           }).join('');
         }
       } catch(e) { c.innerHTML = '<p>خطا</p>'; }
@@ -299,10 +288,8 @@
 
     async function handleNewOrder(e) {
       e.preventDefault();
-      const wt = document.getElementById('newWorkType').value;
-      const desc = document.getElementById('newDescription').value.trim();
-      const err = document.getElementById('newOrderError');
-      const ok = document.getElementById('newOrderSuccess');
+      const wt = document.getElementById('newWorkType').value, desc = document.getElementById('newDescription').value.trim();
+      const err = document.getElementById('newOrderError'), ok = document.getElementById('newOrderSuccess');
       if (!wt || !desc) return;
       err.style.display = 'none'; ok.style.display = 'none';
       try {
