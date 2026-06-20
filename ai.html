@@ -158,12 +158,12 @@
         <div id="noSubscription" style="display:none;">
           <p class="subtitle" style="text-align:center;">برای استفاده از مدل پیشرفته، اشتراک تهیه کنید</p>
           <button class="btn btn-gold" onclick="buySubscription()"><i class="fa-solid fa-crown"></i> خرید اشتراک ۱ ماهه (۹۹,۰۰۰ تومان)</button>
-          <p style="text-align:center;margin-top:8px;font-size:11px;color:#a08b73;"><i class="fa-solid fa-check"></i> ۳ تصویر در روز با کیفیت بالا</p>
+          <p style="text-align:center;margin-top:8px;font-size:11px;color:#a08b73;"><i class="fa-solid fa-check"></i> ۳ تصویر در روز با Gap GPT</p>
         </div>
 
         <div id="proGenerator" style="display:none;">
-          <h2 style="margin-top:16px;"><i class="fa-solid fa-wand-magic-sparkles"></i> پرامپت‌ساز پیشرفته</h2>
-          <p class="subtitle">کیفیت بالاتر، جزئیات بیشتر</p>
+          <h2 style="margin-top:16px;"><i class="fa-solid fa-wand-magic-sparkles"></i> Gap GPT - پیشرفته</h2>
+          <p class="subtitle">هوش مصنوعی ایرانی، کیفیت بالا</p>
 
           <div class="form-row">
             <div class="form-group"><label><i class="fa-solid fa-palette"></i> نوع طرح</label><select id="proType" onchange="updateProPrompt()"><option value="">انتخاب کنید...</option><option value="Islamic religious poster">پوستر مذهبی اسلامی</option><option value="Islamic calligraphy typography">تایپوگرافی اسلامی</option><option value="Islamic architecture scene">معماری اسلامی</option><option value="Eid or Ramadan poster">پوستر عید / رمضان</option><option value="Spiritual Islamic art">هنر اسلامی روحانی</option><option value="Mosque interior design">طراحی داخلی مسجد</option><option value="Islamic geometric pattern art">هنر هندسه اسلامی</option></select></div>
@@ -177,170 +177,124 @@
 
           <div class="prompt-preview" id="proPromptPreview"><small>پرامپت پیشرفته شما...</small></div>
 
-          <button class="btn btn-gold" onclick="generateProImage()" id="proGenBtn"><i class="fa-solid fa-crown"></i> ساخت تصویر پیشرفته</button>
+          <button class="btn btn-gold" onclick="generateProImage()" id="proGenBtn"><i class="fa-solid fa-crown"></i> ساخت با Gap GPT</button>
         </div>
       </div>
 
-      <div class="card" id="proResultCard" style="display:none;"><h2><i class="fa-solid fa-image"></i> نتیجه پیشرفته</h2><div class="result" id="proResult"></div></div>
+      <div class="card" id="proResultCard" style="display:none;"><h2><i class="fa-solid fa-image"></i> نتیجه Gap GPT</h2><div class="result" id="proResult"></div></div>
     </div>
 
     <p class="tips"><i class="fa-solid fa-lightbulb"></i> نکته: پرامپت انگلیسی دقیق‌تر = نتیجه بهتر</p>
   </div>
 
     <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz-riI79-9FmZrqzE8q4nwi7MChAmLqtNkjfNNw-N03H2s9yaPHf4E0E8r-ew4RTrmmNg/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxF7lsZjhg9p7iulr2biE0ePn-nkYfRx2h4yTsjo2_2oMQCAj-gS9TmyNqF1-KEsakQ5A/exec';
     let currentCustomer = null;
 
     window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('qm_customer');
-      if (saved) {
-        try { currentCustomer = JSON.parse(saved); checkProAccess(); } catch(e) {}
-      }
+      if (saved) { try { currentCustomer = JSON.parse(saved); checkProAccess(); } catch(e) {} }
       updateFreePrompt();
     });
 
     function switchTab(tab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      if (tab === 'free') {
-        document.querySelector('.tab:first-child').classList.add('active');
-        document.getElementById('freeTab').style.display = 'block';
-        document.getElementById('proTab').style.display = 'none';
-      } else {
-        document.querySelector('.tab:last-child').classList.add('active');
-        document.getElementById('freeTab').style.display = 'none';
-        document.getElementById('proTab').style.display = 'block';
-        checkProAccess();
-      }
+      if (tab === 'free') { document.querySelector('.tab:first-child').classList.add('active'); document.getElementById('freeTab').style.display='block'; document.getElementById('proTab').style.display='none'; }
+      else { document.querySelector('.tab:last-child').classList.add('active'); document.getElementById('freeTab').style.display='none'; document.getElementById('proTab').style.display='block'; checkProAccess(); }
     }
 
     function updateFreePrompt() {
-      const parts = [];
-      const type = document.getElementById('freeType').value;
-      const colors = document.getElementById('freeColors').value.trim();
-      const text = document.getElementById('freeText').value.trim();
-      const style = document.getElementById('freeStyle').value;
-      const extra = document.getElementById('freeExtra').value.trim();
-      if (type) parts.push(type);
-      if (text) parts.push('with "' + text + '" in golden Arabic calligraphy');
-      if (colors) parts.push(colors + ' color scheme');
-      if (style) parts.push(style);
-      if (extra) parts.push('featuring ' + extra);
-      parts.push('high quality, detailed');
-      const p = parts.join(', ');
-      document.getElementById('freePromptPreview').innerHTML = parts.length > 1 ? '<small style="color:#8e44ad;">پرامپت:</small><br>' + p : '<small>لطفاً حداقل "نوع طرح" را انتخاب کنید...</small>';
+      const p = [];
+      const t = document.getElementById('freeType').value, c = document.getElementById('freeColors').value.trim();
+      const x = document.getElementById('freeText').value.trim(), s = document.getElementById('freeStyle').value;
+      const e = document.getElementById('freeExtra').value.trim();
+      if (t) p.push(t); if (x) p.push('with "'+x+'" in golden Arabic calligraphy');
+      if (c) p.push(c+' color scheme'); if (s) p.push(s); if (e) p.push('featuring '+e);
+      p.push('high quality, detailed');
+      document.getElementById('freePromptPreview').innerHTML = p.length>1 ? '<small style="color:#8e44ad;">پرامپت:</small><br>'+p.join(', ') : '<small>لطفاً حداقل "نوع طرح" را انتخاب کنید...</small>';
     }
 
     async function generateFreeImage() {
-      const type = document.getElementById('freeType').value;
-      if (!type) { alert('لطفاً نوع طرح را انتخاب کنید.'); return; }
-      const parts = [];
-      if (type) parts.push(type);
-      const t = document.getElementById('freeText').value.trim();
-      if (t) parts.push('with "' + t + '" in golden Arabic calligraphy');
-      const c = document.getElementById('freeColors').value.trim();
-      if (c) parts.push(c + ' color scheme');
-      const s = document.getElementById('freeStyle').value;
-      if (s) parts.push(s);
-      const e = document.getElementById('freeExtra').value.trim();
-      if (e) parts.push('featuring ' + e);
-      parts.push('high quality, detailed');
-      const prompt = parts.join(', ');
-      const btn = document.getElementById('freeGenBtn');
-      const rc = document.getElementById('freeResultCard');
-      const r = document.getElementById('freeResult');
-      btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت...';
-      rc.style.display = 'block'; r.innerHTML = '<p style="text-align:center;color:#a08b73;">در حال ساخت تصویر...</p>';
-      const imgUrl = 'https://image.pollinations.ai/prompt/' + encodeURIComponent(prompt) + '?width=512&height=512&nologo=true&seed=' + Math.floor(Math.random()*10000);
+      const t = document.getElementById('freeType').value;
+      if (!t) { alert('لطفاً نوع طرح را انتخاب کنید.'); return; }
+      const p = [t];
+      const x = document.getElementById('freeText').value.trim(), c = document.getElementById('freeColors').value.trim();
+      const s = document.getElementById('freeStyle').value, e = document.getElementById('freeExtra').value.trim();
+      if (x) p.push('with "'+x+'" in golden Arabic calligraphy'); if (c) p.push(c+' color scheme');
+      if (s) p.push(s); if (e) p.push('featuring '+e); p.push('high quality, detailed');
+      const prompt = p.join(', ');
+      const btn = document.getElementById('freeGenBtn'), rc = document.getElementById('freeResultCard'), r = document.getElementById('freeResult');
+      btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت...';
+      rc.style.display='block'; r.innerHTML='<p style="text-align:center;color:#a08b73;">در حال ساخت...</p>';
+      const imgUrl = 'https://image.pollinations.ai/prompt/'+encodeURIComponent(prompt)+'?width=512&height=512&nologo=true&seed='+Math.floor(Math.random()*10000);
       const img = new Image();
-      img.onload = function() {
-        r.innerHTML = `<img src="${imgUrl}" alt="طرح"><a href="${imgUrl}" download class="download-btn"><i class="fa-solid fa-download"></i> دانلود</a>`;
-        btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-rotate"></i> ساخت دوباره';
-        if (currentCustomer) fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'saveFreeImage', customer_id: currentCustomer.customer_id, image_url: imgUrl }) }).catch(()=>{});
-      };
-      img.onerror = function() { r.innerHTML = '<p style="color:red;text-align:center;">خطا در ساخت تصویر.</p>'; btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-robot"></i> ساخت تصویر رایگان'; };
-      img.src = imgUrl;
+      img.onload=function(){ r.innerHTML=`<img src="${imgUrl}" alt="طرح"><a href="${imgUrl}" download class="download-btn"><i class="fa-solid fa-download"></i> دانلود</a>`; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-rotate"></i> ساخت دوباره'; if(currentCustomer) fetch(API_URL,{method:'POST',body:JSON.stringify({action:'saveFreeImage',customer_id:currentCustomer.customer_id,image_url:imgUrl})}).catch(()=>{}); };
+      img.onerror=function(){ r.innerHTML='<p style="color:red;text-align:center;">خطا</p>'; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-robot"></i> ساخت تصویر رایگان'; };
+      img.src=imgUrl;
     }
 
     async function checkProAccess() {
       if (!currentCustomer) { document.getElementById('proLoginPrompt').style.display='block'; document.getElementById('proContent').style.display='none'; return; }
       try {
         const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'checkSubscription', customer_id: currentCustomer.customer_id }) });
-        const data = await res.json();
-        if (data.result === 'success') {
-          currentCustomer.subscription_status = data.data.subscription_status;
-          currentCustomer.subscription_expiry = data.data.subscription_expiry;
-          currentCustomer.remaining_today = data.data.remaining_today;
+        const d = await res.json();
+        if (d.result==='success') {
+          currentCustomer.subscription_status=d.data.subscription_status;
+          currentCustomer.subscription_expiry=d.data.subscription_expiry;
+          currentCustomer.remaining_today=d.data.remaining_today;
           localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
           document.getElementById('proLoginPrompt').style.display='none';
           document.getElementById('proContent').style.display='block';
-          const sub = data.data;
-          document.getElementById('subStatus').textContent = sub.subscription_status==='vip' ? 'VIP (نامحدود)' : sub.subscription_status==='active' ? 'فعال تا '+sub.subscription_expiry : 'غیرفعال';
-          document.getElementById('subRemaining').textContent = sub.subscription_status==='vip' ? '∞' : sub.remaining_today;
-          if (sub.subscription_status==='active'||sub.subscription_status==='vip') {
-            document.getElementById('noSubscription').style.display='none';
-            document.getElementById('proGenerator').style.display='block';
-            updateProPrompt();
-          } else { document.getElementById('noSubscription').style.display='block'; document.getElementById('proGenerator').style.display='none'; }
+          document.getElementById('subStatus').textContent = d.data.subscription_status==='vip'?'VIP نامحدود':d.data.subscription_status==='active'?'فعال تا '+d.data.subscription_expiry:'غیرفعال';
+          document.getElementById('subRemaining').textContent = d.data.subscription_status==='vip'?'∞':d.data.remaining_today;
+          if (d.data.subscription_status==='active'||d.data.subscription_status==='vip') { document.getElementById('noSubscription').style.display='none'; document.getElementById('proGenerator').style.display='block'; updateProPrompt(); }
+          else { document.getElementById('noSubscription').style.display='block'; document.getElementById('proGenerator').style.display='none'; }
         }
       } catch(e) {}
     }
 
     function updateProPrompt() {
-      const parts = [];
-      const t = document.getElementById('proType').value;
-      const c = document.getElementById('proColors').value.trim();
-      const x = document.getElementById('proText').value.trim();
-      const s = document.getElementById('proStyle').value;
+      const p = [];
+      const t = document.getElementById('proType').value, c = document.getElementById('proColors').value.trim();
+      const x = document.getElementById('proText').value.trim(), s = document.getElementById('proStyle').value;
       const e = document.getElementById('proExtra').value.trim();
-      if (t) parts.push(t);
-      if (x) parts.push('with "'+x+'" in golden Arabic calligraphy');
-      if (c) parts.push(c+' color scheme');
-      if (s) parts.push(s);
-      if (e) parts.push('featuring '+e);
-      parts.push('ultra high quality, 8K, professional, intricate details');
-      document.getElementById('proPromptPreview').innerHTML = parts.length>1 ? '<small style="color:#f39c12;">پرامپت پیشرفته:</small><br>'+parts.join(', ') : '<small>پرامپت پیشرفته شما...</small>';
+      if (t) p.push(t); if (x) p.push('with "'+x+'" in golden Arabic calligraphy');
+      if (c) p.push(c+' color scheme'); if (s) p.push(s); if (e) p.push('featuring '+e);
+      p.push('ultra high quality, professional');
+      document.getElementById('proPromptPreview').innerHTML = p.length>1 ? '<small style="color:#f39c12;">پرامپت:</small><br>'+p.join(', ') : '<small>پرامپت پیشرفته شما...</small>';
     }
 
     async function generateProImage() {
-      const type = document.getElementById('proType').value;
-      if (!type) { alert('لطفاً نوع طرح را انتخاب کنید.'); return; }
+      const t = document.getElementById('proType').value;
+      if (!t) { alert('لطفاً نوع طرح را انتخاب کنید.'); return; }
       if (!currentCustomer) { alert('لطفاً وارد شوید.'); return; }
-      const parts = [];
-      if (type) parts.push(type);
-      const x = document.getElementById('proText').value.trim();
-      if (x) parts.push('with "'+x+'" in golden Arabic calligraphy');
-      const c = document.getElementById('proColors').value.trim();
-      if (c) parts.push(c+' color scheme');
-      const s = document.getElementById('proStyle').value;
-      if (s) parts.push(s);
-      const e = document.getElementById('proExtra').value.trim();
-      if (e) parts.push('featuring '+e);
-      parts.push('ultra high quality, 8K, professional, intricate details');
-      const prompt = parts.join(', ');
-      const btn = document.getElementById('proGenBtn');
-      const rc = document.getElementById('proResultCard');
-      const r = document.getElementById('proResult');
-      btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت...';
-      rc.style.display = 'block'; r.innerHTML = '<p style="text-align:center;color:#a08b73;">در حال ساخت تصویر پیشرفته...</p>';
-      const imgUrl = 'https://image.pollinations.ai/prompt/'+encodeURIComponent(prompt)+'?width=1024&height=1024&nologo=true&seed='+Math.floor(Math.random()*10000);
-      const img = new Image();
-      img.onload = async function() {
-        r.innerHTML = `<img src="${imgUrl}" alt="طرح"><a href="${imgUrl}" download class="download-btn"><i class="fa-solid fa-download"></i> دانلود</a>`;
-        const sRes = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'saveProImage', customer_id: currentCustomer.customer_id, image_url: imgUrl }) });
-        const sData = await sRes.json();
-        if (sData.result==='success') { document.getElementById('subRemaining').textContent = sData.data.remaining; }
-        btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-rotate"></i> ساخت دوباره';
-      };
-      img.onerror = function() { r.innerHTML = '<p style="color:red;text-align:center;">خطا در ساخت تصویر.</p>'; btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-crown"></i> ساخت تصویر پیشرفته'; };
-      img.src = imgUrl;
+      
+      const p = [t];
+      const x = document.getElementById('proText').value.trim(), c = document.getElementById('proColors').value.trim();
+      const s = document.getElementById('proStyle').value, e = document.getElementById('proExtra').value.trim();
+      if (x) p.push('with "'+x+'" in golden Arabic calligraphy'); if (c) p.push(c+' color scheme');
+      if (s) p.push(s); if (e) p.push('featuring '+e); p.push('ultra high quality, professional');
+      const prompt = p.join(', ');
+      
+      const btn = document.getElementById('proGenBtn'), rc = document.getElementById('proResultCard'), r = document.getElementById('proResult');
+      btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت با Gap GPT...';
+      rc.style.display='block'; r.innerHTML='<p style="text-align:center;color:#a08b73;">در حال ساخت با هوش مصنوعی ایرانی...</p>';
+      
+      try {
+        const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'generateProImageGap', customer_id: currentCustomer.customer_id, prompt: prompt }) });
+        const d = await res.json();
+        if (d.result==='success') {
+          r.innerHTML = `<img src="${d.data.image_url}" alt="طرح"><a href="${d.data.image_url}" download class="download-btn"><i class="fa-solid fa-download"></i> دانلود</a>`;
+          document.getElementById('subRemaining').textContent = d.data.remaining;
+          btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-rotate"></i> ساخت دوباره';
+        } else { r.innerHTML='<p style="color:red;text-align:center;">'+d.message+'</p>'; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-crown"></i> ساخت با Gap GPT'; }
+      } catch(e) { r.innerHTML='<p style="color:red;text-align:center;">خطا در ارتباط با سرور</p>'; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-crown"></i> ساخت با Gap GPT'; }
     }
 
-    function buySubscription() {
-      localStorage.setItem('qm_buy_subscription', 'ai_pro');
-      window.location.href = 'pay.html';
-    }
+    function buySubscription() { localStorage.setItem('qm_buy_subscription','ai_pro'); window.location.href='pay.html'; }
 
     updateFreePrompt();
   </script>
 </body>
 </html>
+  
