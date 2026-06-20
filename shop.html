@@ -18,6 +18,7 @@
       --text: #5c4a3a;
       --white: #ffffff;
       --red: #e74c3c;
+      --green: #27ae60;
     }
 
     body {
@@ -27,7 +28,6 @@
       min-height: 100vh;
     }
 
-    /* ========== HEADER ========== */
     .header {
       background: var(--white);
       box-shadow: 0 2px 16px rgba(0,0,0,0.04);
@@ -76,7 +76,6 @@
       font-size: 16px;
     }
 
-    /* ========== PRODUCT DETAIL ========== */
     .product-container {
       max-width: 800px;
       margin: 0 auto;
@@ -121,7 +120,7 @@
     .product-price-large {
       font-size: 28px;
       font-weight: 700;
-      color: #27ae60;
+      color: var(--green);
       margin-bottom: 16px;
     }
 
@@ -159,7 +158,6 @@
 
     .product-meta-info i { color: var(--brown); }
 
-    /* ========== BUTTONS ROW ========== */
     .buttons-row {
       display: flex;
       gap: 12px;
@@ -184,6 +182,7 @@
       font-family: inherit;
       transition: all 0.3s ease;
       box-shadow: 0 4px 16px rgba(39,174,96,0.25);
+      text-decoration: none;
     }
 
     .btn-buy:hover {
@@ -237,7 +236,6 @@
       100% { transform: scale(1); }
     }
 
-    /* ========== EMPTY / ERROR ========== */
     .empty-state {
       text-align: center;
       padding: 80px 20px;
@@ -262,7 +260,6 @@
       text-decoration: none;
     }
 
-    /* ========== RESPONSIVE ========== */
     @media (max-width: 600px) {
       .product-container { padding: 12px; }
       .product-image-large { max-height: 300px; }
@@ -276,7 +273,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <button class="header-back" onclick="history.back()">
       <i class="fa-solid fa-arrow-right"></i>
@@ -289,7 +285,6 @@
     <div style="width:60px;"></div>
   </header>
 
-  <!-- PRODUCT DETAIL -->
   <div class="product-container" id="productContainer">
     <div class="empty-state" id="loadingState">
       <i class="fa-solid fa-spinner fa-spin"></i>
@@ -298,7 +293,7 @@
   </div>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbyYFS0EPvyg2nvcniO9F4qpomgp6S4Dxi3YOy1nDhSHKppft5fvCPU9Gb2TmOR3Odxbog/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz4tI_IxdN__qlIQn_Dy1uGakTzZ6lexrT5BMVHyxvvWlLzkjswliMt-1lLvlvhaEgCOg/exec';
 
     const categoryLabels = {
       poster: 'پوستر',
@@ -307,6 +302,17 @@
       logo: 'لوگو',
       other: 'سایر'
     };
+
+    function checkIfPurchased(productId) {
+      const saved = localStorage.getItem('qm_customer');
+      if (!saved) return false;
+      try {
+        const customer = JSON.parse(saved);
+        if (!customer.purchases) return false;
+        const purchases = customer.purchases.split(',').map(p => p.trim());
+        return purchases.some(p => p.startsWith(productId + ':'));
+      } catch(e) { return false; }
+    }
 
     async function loadProduct() {
       const productId = localStorage.getItem('qm_selected_product');
@@ -348,11 +354,10 @@
             return;
           }
 
-          // Handle view count
           handleViewCount(productId);
 
-          // Handle like button state
           const hasLiked = localStorage.getItem('qm_liked_' + productId) === 'true';
+          const alreadyPurchased = checkIfPurchased(productId);
 
           container.innerHTML = `
             <img src="${product.header_image || 'https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg'}" 
@@ -382,11 +387,18 @@
               </div>
               
               <div class="buttons-row">
-                <button class="btn-buy" onclick="buyProduct('${product.product_id}', '${product.name}')">
-                  <i class="fa-solid fa-cart-shopping"></i>
-                  خرید این محصول
-                </button>
-                <button class="btn-like ${hasLiked ? 'liked' : ''}" id="likeButton" onclick="toggleLike('${product.product_id}')" ${hasLiked ? '' : ''}>
+                ${alreadyPurchased ? `
+                  <button class="btn-buy" style="background:linear-gradient(145deg, var(--brown), #6d553b);" onclick="window.location.href='mypage.html'">
+                    <i class="fa-solid fa-eye"></i>
+                    مشاهده در خریدهای من
+                  </button>
+                ` : `
+                  <button class="btn-buy" onclick="buyProduct('${product.product_id}', '${product.name}')">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    خرید این محصول
+                  </button>
+                `}
+                <button class="btn-like ${hasLiked ? 'liked' : ''}" id="likeButton" onclick="toggleLike('${product.product_id}')">
                   <i class="fa-solid fa-heart"></i>
                   <span id="likeText">${hasLiked ? 'پسندیده شد' : 'می‌پسندم'}</span>
                 </button>
@@ -411,15 +423,10 @@
     function handleViewCount(productId) {
       const viewedKey = 'qm_viewed_' + productId;
       
-      if (localStorage.getItem(viewedKey) === 'true') {
-        // Already viewed, don't increment
-        return;
-      }
+      if (localStorage.getItem(viewedKey) === 'true') return;
 
-      // Mark as viewed
       localStorage.setItem(viewedKey, 'true');
 
-      // Increment view in sheet
       fetch(API_URL, {
         method: 'POST',
         body: JSON.stringify({ action: 'incrementViews', product_id: productId })
@@ -443,7 +450,6 @@
       const likeText = document.getElementById('likeText');
 
       if (hasLiked) {
-        // Unlike
         localStorage.removeItem(likeKey);
         btn.classList.remove('liked');
         likeText.textContent = 'می‌پسندم';
@@ -459,7 +465,6 @@
           }
         } catch(e) {}
       } else {
-        // Like
         localStorage.setItem(likeKey, 'true');
         btn.classList.add('liked');
         likeText.textContent = 'پسندیده شد';
