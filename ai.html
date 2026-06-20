@@ -70,7 +70,6 @@
     }
     .btn-purple { background: linear-gradient(145deg, #8e44ad, #6c3483); color: #fff; }
     .btn-purple:disabled { opacity: 0.6; cursor: not-allowed; }
-    .btn-gold { background: linear-gradient(145deg, #f39c12, #e67e22); color: #fff; }
 
     .result { margin-top: 20px; }
     .result img { width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -79,14 +78,6 @@
       margin-top: 12px; padding: 10px 20px; background: var(--green);
       color: #fff; border-radius: 8px; text-decoration: none; font-size: 13px;
     }
-
-    .info-row {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
-      background: #fdfaf6; padding: 12px 16px; border-radius: 10px;
-    }
-    .info-row span { font-size: 13px; }
-    .info-row strong { color: var(--purple); }
 
     .login-prompt { text-align: center; padding: 20px; }
     .login-prompt p { color: #a08b73; margin-bottom: 12px; }
@@ -141,47 +132,19 @@
     </div>
 
     <div id="proTab" style="display:none;">
-      <div class="card" id="proLoginPrompt">
+      <div class="card">
         <div class="login-prompt">
           <i class="fa-solid fa-lock" style="font-size:48px;color:#b8a48e;"></i>
-          <p>برای استفاده از بخش پیشرفته باید وارد حساب کاربری خود شوید</p>
-          <button class="btn btn-purple" onclick="window.location.href='mypage.html'"><i class="fa-solid fa-right-to-bracket"></i> ورود / ثبت‌نام</button>
+          <h2 style="margin-top:12px;">به زودی...</h2>
+          <p>بخش پیشرفته با هوش مصنوعی ایرانی (Gap GPT) به زودی راه‌اندازی می‌شود</p>
+          <p style="font-size:12px;color:#a08b73;margin-top:8px;">
+            <i class="fa-solid fa-crown" style="color:#f39c12;"></i> ۳ تصویر در روز با کیفیت بالا
+          </p>
+          <p style="font-size:12px;color:#a08b73;">
+            <i class="fa-solid fa-tag"></i> اشتراک ۱ ماهه: ۱۹۹,۰۰۰ تومان
+          </p>
         </div>
       </div>
-
-      <div class="card" id="proContent" style="display:none;">
-        <div class="info-row">
-          <span><i class="fa-solid fa-crown" style="color:#f39c12;"></i> وضعیت: <strong id="subStatus">---</strong></span>
-          <span><i class="fa-solid fa-image"></i> باقی‌مانده امروز: <strong id="subRemaining">0</strong></span>
-        </div>
-
-        <div id="noSubscription" style="display:none;">
-          <p class="subtitle" style="text-align:center;">برای استفاده از مدل پیشرفته، اشتراک تهیه کنید</p>
-          <button class="btn btn-gold" onclick="buySubscription()"><i class="fa-solid fa-crown"></i> خرید اشتراک ۱ ماهه (۹۹,۰۰۰ تومان)</button>
-          <p style="text-align:center;margin-top:8px;font-size:11px;color:#a08b73;"><i class="fa-solid fa-check"></i> ۳ تصویر در روز با Gap GPT</p>
-        </div>
-
-        <div id="proGenerator" style="display:none;">
-          <h2 style="margin-top:16px;"><i class="fa-solid fa-wand-magic-sparkles"></i> Gap GPT - پیشرفته</h2>
-          <p class="subtitle">هوش مصنوعی ایرانی، کیفیت بالا</p>
-
-          <div class="form-row">
-            <div class="form-group"><label><i class="fa-solid fa-palette"></i> نوع طرح</label><select id="proType" onchange="updateProPrompt()"><option value="">انتخاب کنید...</option><option value="Islamic religious poster">پوستر مذهبی اسلامی</option><option value="Islamic calligraphy typography">تایپوگرافی اسلامی</option><option value="Islamic architecture scene">معماری اسلامی</option><option value="Eid or Ramadan poster">پوستر عید / رمضان</option><option value="Spiritual Islamic art">هنر اسلامی روحانی</option><option value="Mosque interior design">طراحی داخلی مسجد</option><option value="Islamic geometric pattern art">هنر هندسه اسلامی</option></select></div>
-            <div class="form-group"><label><i class="fa-solid fa-droplet"></i> رنگ‌بندی</label><input type="text" id="proColors" placeholder="مثلاً: black and gold..." oninput="updateProPrompt()"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label><i class="fa-solid fa-text-height"></i> متن یا کلمه خاص</label><input type="text" id="proText" placeholder="مثلاً: Ya Hussein, Allah..." oninput="updateProPrompt()"></div>
-            <div class="form-group"><label><i class="fa-solid fa-paintbrush"></i> سبک هنری</label><select id="proStyle" onchange="updateProPrompt()"><option value="">انتخاب کنید...</option><option value="Persian miniature style">مینیاتور ایرانی</option><option value="Ottoman calligraphy style">خط عثمانی</option><option value="modern digital art">هنر دیجیتال مدرن</option><option value="traditional arabesque">اسلیمی سنتی</option><option value="watercolor painting">آبرنگ</option><option value="3D render">رندر سه‌بعدی</option></select></div>
-          </div>
-          <div class="form-group full"><label><i class="fa-solid fa-plus-circle"></i> جزئیات اضافه</label><input type="text" id="proExtra" placeholder="مثلاً: crescent moon, candles, dome..." oninput="updateProPrompt()"></div>
-
-          <div class="prompt-preview" id="proPromptPreview"><small>پرامپت پیشرفته شما...</small></div>
-
-          <button class="btn btn-gold" onclick="generateProImage()" id="proGenBtn"><i class="fa-solid fa-crown"></i> ساخت با Gap GPT</button>
-        </div>
-      </div>
-
-      <div class="card" id="proResultCard" style="display:none;"><h2><i class="fa-solid fa-image"></i> نتیجه Gap GPT</h2><div class="result" id="proResult"></div></div>
     </div>
 
     <p class="tips"><i class="fa-solid fa-lightbulb"></i> نکته: پرامپت انگلیسی دقیق‌تر = نتیجه بهتر</p>
@@ -193,14 +156,14 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('qm_customer');
-      if (saved) { try { currentCustomer = JSON.parse(saved); checkProAccess(); } catch(e) {} }
+      if (saved) { try { currentCustomer = JSON.parse(saved); } catch(e) {} }
       updateFreePrompt();
     });
 
     function switchTab(tab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       if (tab === 'free') { document.querySelector('.tab:first-child').classList.add('active'); document.getElementById('freeTab').style.display='block'; document.getElementById('proTab').style.display='none'; }
-      else { document.querySelector('.tab:last-child').classList.add('active'); document.getElementById('freeTab').style.display='none'; document.getElementById('proTab').style.display='block'; checkProAccess(); }
+      else { document.querySelector('.tab:last-child').classList.add('active'); document.getElementById('freeTab').style.display='none'; document.getElementById('proTab').style.display='block'; }
     }
 
     function updateFreePrompt() {
@@ -233,68 +196,7 @@
       img.src=imgUrl;
     }
 
-    async function checkProAccess() {
-      if (!currentCustomer) { document.getElementById('proLoginPrompt').style.display='block'; document.getElementById('proContent').style.display='none'; return; }
-      try {
-        const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'checkSubscription', customer_id: currentCustomer.customer_id }) });
-        const d = await res.json();
-        if (d.result==='success') {
-          currentCustomer.subscription_status=d.data.subscription_status;
-          currentCustomer.subscription_expiry=d.data.subscription_expiry;
-          currentCustomer.remaining_today=d.data.remaining_today;
-          localStorage.setItem('qm_customer', JSON.stringify(currentCustomer));
-          document.getElementById('proLoginPrompt').style.display='none';
-          document.getElementById('proContent').style.display='block';
-          document.getElementById('subStatus').textContent = d.data.subscription_status==='vip'?'VIP نامحدود':d.data.subscription_status==='active'?'فعال تا '+d.data.subscription_expiry:'غیرفعال';
-          document.getElementById('subRemaining').textContent = d.data.subscription_status==='vip'?'∞':d.data.remaining_today;
-          if (d.data.subscription_status==='active'||d.data.subscription_status==='vip') { document.getElementById('noSubscription').style.display='none'; document.getElementById('proGenerator').style.display='block'; updateProPrompt(); }
-          else { document.getElementById('noSubscription').style.display='block'; document.getElementById('proGenerator').style.display='none'; }
-        }
-      } catch(e) {}
-    }
-
-    function updateProPrompt() {
-      const p = [];
-      const t = document.getElementById('proType').value, c = document.getElementById('proColors').value.trim();
-      const x = document.getElementById('proText').value.trim(), s = document.getElementById('proStyle').value;
-      const e = document.getElementById('proExtra').value.trim();
-      if (t) p.push(t); if (x) p.push('with "'+x+'" in golden Arabic calligraphy');
-      if (c) p.push(c+' color scheme'); if (s) p.push(s); if (e) p.push('featuring '+e);
-      p.push('ultra high quality, professional');
-      document.getElementById('proPromptPreview').innerHTML = p.length>1 ? '<small style="color:#f39c12;">پرامپت:</small><br>'+p.join(', ') : '<small>پرامپت پیشرفته شما...</small>';
-    }
-
-    async function generateProImage() {
-      const t = document.getElementById('proType').value;
-      if (!t) { alert('لطفاً نوع طرح را انتخاب کنید.'); return; }
-      if (!currentCustomer) { alert('لطفاً وارد شوید.'); return; }
-      
-      const p = [t];
-      const x = document.getElementById('proText').value.trim(), c = document.getElementById('proColors').value.trim();
-      const s = document.getElementById('proStyle').value, e = document.getElementById('proExtra').value.trim();
-      if (x) p.push('with "'+x+'" in golden Arabic calligraphy'); if (c) p.push(c+' color scheme');
-      if (s) p.push(s); if (e) p.push('featuring '+e); p.push('ultra high quality, professional');
-      const prompt = p.join(', ');
-      
-      const btn = document.getElementById('proGenBtn'), rc = document.getElementById('proResultCard'), r = document.getElementById('proResult');
-      btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> در حال ساخت با Gap GPT...';
-      rc.style.display='block'; r.innerHTML='<p style="text-align:center;color:#a08b73;">در حال ساخت با هوش مصنوعی ایرانی...</p>';
-      
-      try {
-        const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'generateProImageGap', customer_id: currentCustomer.customer_id, prompt: prompt }) });
-        const d = await res.json();
-        if (d.result==='success') {
-          r.innerHTML = `<img src="${d.data.image_url}" alt="طرح"><a href="${d.data.image_url}" download class="download-btn"><i class="fa-solid fa-download"></i> دانلود</a>`;
-          document.getElementById('subRemaining').textContent = d.data.remaining;
-          btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-rotate"></i> ساخت دوباره';
-        } else { r.innerHTML='<p style="color:red;text-align:center;">'+d.message+'</p>'; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-crown"></i> ساخت با Gap GPT'; }
-      } catch(e) { r.innerHTML='<p style="color:red;text-align:center;">خطا در ارتباط با سرور</p>'; btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-crown"></i> ساخت با Gap GPT'; }
-    }
-
-    function buySubscription() { localStorage.setItem('qm_buy_subscription','ai_pro'); window.location.href='pay.html'; }
-
     updateFreePrompt();
   </script>
 </body>
 </html>
-  
