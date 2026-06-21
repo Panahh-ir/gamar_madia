@@ -33,6 +33,8 @@
     }
     .btn-profile { color: var(--brown); border: 1.5px solid var(--gold); }
     .btn-profile:hover { background: var(--milk); }
+    .btn-support { color: #2196F3; border: 1.5px solid #2196F3; }
+    .btn-support:hover { background: #e3f2fd; }
     .header-logo {
       width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
       border: 2px solid var(--milk); box-shadow: 0 3px 10px rgba(0,0,0,0.05);
@@ -138,15 +140,16 @@
 
   <header class="header">
     <div class="header-inner">
+      <div class="header-btns">
+        <a href="mypage.html" class="header-btn btn-profile"><i class="fa-solid fa-user"></i> صفحه شخصی</a>
+        <a href="support.html" class="header-btn btn-support"><i class="fa-solid fa-headset"></i> پشتیبانی</a>
+      </div>
       <div style="display:flex;align-items:center;gap:10px;">
         <img src="https://cdn.imgurl.ir/uploads/n606537_IMG_20260618_122029_787.jpg" alt="رسانه هنری قمر" class="header-logo">
         <div>
           <div class="header-title">رسانه هنری قمر</div>
           <div class="header-subtitle">هنر ماندگار، از قمر ماندگارتر</div>
         </div>
-      </div>
-      <div class="header-btns">
-        <a href="mypage.html" class="header-btn btn-profile"><i class="fa-solid fa-user"></i> صفحه شخصی</a>
       </div>
     </div>
   </header>
@@ -189,7 +192,7 @@
   </a>
 
     <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz4tI_IxdN__qlIQn_Dy1uGakTzZ6lexrT5BMVHyxvvWlLzkjswliMt-1lLvlvhaEgCOg/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwO7MVGgSVbHar635pyxVqRAlLehpR1q9oc4mU0f20E9JbZkhHzljq87gbyjt8K8RuxwA/exec';
     let allProducts = [];
 
     const categoryLabels = {
@@ -233,6 +236,24 @@
         </div>
       </div>
     `;
+
+    // ========== VISIT TRACKING ==========
+    function trackVisit() {
+      const lastVisit = localStorage.getItem('qm_last_visit');
+      const now = Date.now();
+      
+      if (!lastVisit || (now - parseInt(lastVisit)) > 1800000) { // 30 min = 1,800,000 ms
+        localStorage.setItem('qm_last_visit', now);
+        fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify({ action: 'trackVisit', ip_address: 'visitor_' + now })
+        }).then(r => r.json()).then(d => {
+          if (d.result === 'success' && d.data.unique) {
+            loadFooterStats();
+          }
+        }).catch(() => {});
+      }
+    }
 
     async function loadProducts() {
       try {
@@ -324,6 +345,7 @@
       } catch(e) {}
     }
 
+    trackVisit();
     loadProducts();
     loadFooterStats();
   </script>
