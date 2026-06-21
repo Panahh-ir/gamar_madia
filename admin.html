@@ -141,66 +141,51 @@
   </div>
 
   <div class="modal-overlay" id="productModal">
-    <div class="modal">
-      <h3 id="productModalTitle">افزودن محصول</h3>
-      <form id="productForm"><input type="hidden" id="productEditId">
-        <div class="form-group"><label>نام</label><input type="text" id="productName" required></div>
-        <div class="form-group"><label>دسته‌بندی</label><select id="productCategory"><option value="poster">پوستر</option><option value="typography">تایپوگرافی</option><option value="profile">پروفایل</option><option value="logo">لوگو</option><option value="other">سایر</option></select></div>
-        <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="productPrice"></div>
-        <div class="form-group"><label>لینک تصویر</label><input type="url" id="productImage"></div>
-        <div class="form-group"><label>لینک فایل</label><input type="url" id="productFile"></div>
-        <div class="error-message" id="productError"></div><div class="success-message" id="productSuccess"></div>
-        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('productModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
-      </form>
-    </div>
+    <div class="modal"><h3 id="productModalTitle">افزودن محصول</h3><form id="productForm"><input type="hidden" id="productEditId">
+      <div class="form-group"><label>نام</label><input type="text" id="productName" required></div>
+      <div class="form-group"><label>دسته‌بندی</label><select id="productCategory"><option value="poster">پوستر</option><option value="typography">تایپوگرافی</option><option value="profile">پروفایل</option><option value="logo">لوگو</option><option value="other">سایر</option></select></div>
+      <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="productPrice"></div>
+      <div class="form-group"><label>لینک تصویر</label><input type="url" id="productImage"></div>
+      <div class="form-group"><label>لینک فایل</label><input type="url" id="productFile"></div>
+      <div class="error-message" id="productError"></div><div class="success-message" id="productSuccess"></div>
+      <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('productModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
+    </form></div>
   </div>
   <div class="modal-overlay" id="portfolioModal">
-    <div class="modal">
-      <h3 id="portfolioModalTitle">افزودن نمونه کار</h3>
-      <form id="portfolioForm"><input type="hidden" id="portfolioEditId">
-        <div class="form-group"><label>تیتر</label><input type="text" id="portfolioTitle" required></div>
-        <div class="form-group"><label>توضیح</label><input type="text" id="portfolioDesc"></div>
-        <div class="form-group"><label>لینک تصویر</label><input type="url" id="portfolioImage" required></div>
-        <div class="error-message" id="portfolioError"></div><div class="success-message" id="portfolioSuccess"></div>
-        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('portfolioModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
-      </form>
-    </div>
+    <div class="modal"><h3 id="portfolioModalTitle">افزودن نمونه کار</h3><form id="portfolioForm"><input type="hidden" id="portfolioEditId">
+      <div class="form-group"><label>تیتر</label><input type="text" id="portfolioTitle" required></div>
+      <div class="form-group"><label>توضیح</label><input type="text" id="portfolioDesc"></div>
+      <div class="form-group"><label>لینک تصویر</label><input type="url" id="portfolioImage" required></div>
+      <div class="error-message" id="portfolioError"></div><div class="success-message" id="portfolioSuccess"></div>
+      <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('portfolioModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
+    </form></div>
   </div>
   <div class="modal-overlay" id="orderModal">
-    <div class="modal">
-      <h3>ویرایش سفارش</h3>
-      <form id="orderForm"><input type="hidden" id="orderEditId">
-        <div class="form-group"><label>وضعیت</label><select id="orderStatus"><option value="pending">در انتظار</option><option value="in_progress">در حال انجام</option><option value="delivered">تحویل داده شد</option></select></div>
-        <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="orderPrice"></div>
-        <div class="form-group"><label>لینک فایل</label><input type="url" id="orderFileLink"></div>
-        <div class="error-message" id="orderError"></div><div class="success-message" id="orderSuccess"></div>
-        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('orderModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
-      </form>
-    </div>
+    <div class="modal"><h3>ویرایش سفارش</h3><form id="orderForm"><input type="hidden" id="orderEditId">
+      <div class="form-group"><label>وضعیت</label><select id="orderStatus"><option value="pending">در انتظار</option><option value="in_progress">در حال انجام</option><option value="delivered">تحویل داده شد</option></select></div>
+      <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="orderPrice"></div>
+      <div class="form-group"><label>لینک فایل</label><input type="url" id="orderFileLink"></div>
+      <div class="error-message" id="orderError"></div><div class="success-message" id="orderSuccess"></div>
+      <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('orderModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
+    </form></div>
   </div>
   <div class="modal-overlay" id="userModal">
-    <div class="modal">
-      <h3 id="userModalTitle">افزودن کاربر</h3>
-      <form id="userForm"><input type="hidden" id="userEditUsername">
-        <div class="form-group"><label>نام کاربری</label><input type="text" id="newUsername" required></div>
-        <div class="form-group"><label>رمز عبور</label><input type="password" id="newPassword" required></div>
-        <div class="form-group"><label>نام</label><input type="text" id="newName" required></div>
-        <div class="form-group"><label>نقش</label><select id="newRole"><option value="admin">ادمین</option><option value="super_admin">ادمین ویژه</option></select></div>
-        <div class="error-message" id="userError"></div><div class="success-message" id="userSuccess"></div>
-        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('userModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
-      </form>
-    </div>
+    <div class="modal"><h3 id="userModalTitle">افزودن کاربر</h3><form id="userForm"><input type="hidden" id="userEditUsername">
+      <div class="form-group"><label>نام کاربری</label><input type="text" id="newUsername" required></div>
+      <div class="form-group"><label>رمز عبور</label><input type="password" id="newPassword" required></div>
+      <div class="form-group"><label>نام</label><input type="text" id="newName" required></div>
+      <div class="form-group"><label>نقش</label><select id="newRole"><option value="admin">ادمین</option><option value="super_admin">ادمین ویژه</option></select></div>
+      <div class="error-message" id="userError"></div><div class="success-message" id="userSuccess"></div>
+      <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('userModal')">انصراف</button><button type="submit" class="btn btn-sm btn-primary">ذخیره</button></div>
+    </form></div>
   </div>
   <div class="modal-overlay" id="rejectModal">
-    <div class="modal">
-      <h3>رد سفارش</h3>
-      <form id="rejectForm"><input type="hidden" id="rejectOrderId">
-        <div class="form-group"><label>دلیل رد</label><textarea id="rejectReason"></textarea></div>
-        <div class="error-message" id="rejectError"></div>
-        <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('rejectModal')">انصراف</button><button type="submit" class="btn btn-sm btn-danger">رد سفارش</button></div>
-      </form>
-    </div>
-  </div>
+    <div class="modal"><h3>رد سفارش</h3><form id="rejectForm"><input type="hidden" id="rejectOrderId">
+      <div class="form-group"><label>دلیل رد</label><textarea id="rejectReason"></textarea></div>
+      <div class="error-message" id="rejectError"></div>
+      <div class="modal-buttons"><button type="button" class="btn btn-sm btn-outline" onclick="closeModal('rejectModal')">انصراف</button><button type="submit" class="btn btn-sm btn-danger">رد سفارش</button></div>
+    </form></div>
+        </div>
 
   <script>
   const API_URL = 'https://script.google.com/macros/s/AKfycbwBVFp23ysijQCOHlc_0z7LmRCAMfWrLO9AXaja93qpbYXg_8hWEbYk4ipXs8YeI1dLhw/exec';
@@ -230,14 +215,19 @@
     try {
       const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'login', username: u, password: p }) });
       const d = await res.json();
-      if (d.result === 'success') { currentUser = d.data; localStorage.setItem('qm_user', JSON.stringify(currentUser)); showDashboard(); }
-      else { err.textContent = d.message || 'خطا در ورود'; err.style.display = 'block'; }
+      if (d.result === 'success') {
+        currentUser = d.data;
+        localStorage.setItem('qm_user', JSON.stringify(currentUser));
+        // اگر سازنده است، هدایت به creator.html
+        if (currentUser.role === 'creator') { window.location.href = 'creator.html'; return; }
+        showDashboard();
+      } else { err.textContent = d.message || 'خطا در ورود'; err.style.display = 'block'; }
     } catch(e) { err.textContent = 'خطا در ارتباط با سرور'; err.style.display = 'block'; }
     finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> ورود به پنل'; }
   });
 
   function showDashboard() {
-    if (!currentUser) { showLogin(); return; }
+    if (!currentUser || currentUser.role === 'creator') { window.location.href = 'creator.html'; return; }
     document.getElementById('loginSection').style.display = 'none';
     document.getElementById('dashboardSection').classList.add('active');
     document.getElementById('displayName').textContent = currentUser.name;
@@ -250,13 +240,11 @@
   function getRoleLabel(role) { const m = { creator: 'سازنده', owner: 'مالک', super_admin: 'ادمین ویژه', admin: 'ادمین' }; return m[role] || role; }
 
   function showPerms() {
-    const r = currentUser.role, perms = [];
-    if (r==='creator'||r==='owner'||r==='super_admin'||r==='admin') perms.push('محصولات');
-    if (r==='creator'||r==='owner'||r==='super_admin') perms.push('نمونه‌کار');
-    if (r==='creator'||r==='owner'||r==='super_admin'||r==='admin') perms.push('سفارشات');
-    if (r==='creator'||r==='owner') perms.push('مدیریت کاربران');
-    if (r==='creator'||r==='owner'||r==='super_admin') perms.push('تبلیغات');
-    if (r==='creator'||r==='owner'||r==='super_admin'||r==='admin') perms.push('آمار');
+    const r = currentUser.role;
+    const perms = ['محصولات', 'نمونه‌کار', 'سفارشات'];
+    if (r === 'owner') perms.push('مدیریت کاربران');
+    if (r === 'owner' || r === 'super_admin') perms.push('تبلیغات');
+    perms.push('آمار');
     document.getElementById('displayPerms').innerHTML = perms.map(p => `<span class="perm-badge">${p}</span>`).join('');
   }
 
@@ -272,6 +260,12 @@
     else if (name==='users') loadUsersAdmin();
     else if (name==='ads') loadAdsAdmin();
     else if (name==='stats') loadStatsAdmin();
+  }
+
+  function canEdit(addedBy) {
+    if (currentUser.role==='owner'||currentUser.role==='super_admin') return true;
+    if (currentUser.role==='admin') return (addedBy||'').includes(currentUser.username);
+    return false;
   }
 
   // ========== PRODUCTS ==========
@@ -292,12 +286,6 @@
           <td class="actions">${canEdit(p.added_by)?`<button class="btn btn-xs btn-outline" onclick="editProduct('${p.product_id}')"><i class="fa-solid fa-pen"></i></button><button class="btn btn-xs btn-danger" onclick="deleteProduct('${p.product_id}')"><i class="fa-solid fa-trash"></i></button>`:'<span class="badge badge-info">مشاهده</span>'}</td></tr>`).join('');
       } else { tbody.innerHTML = '<tr><td colspan="8">محصولی نیست</td></tr>'; }
     } catch(e) {}
-  }
-
-  function canEdit(addedBy) {
-    if (currentUser.role==='owner'||currentUser.role==='super_admin') return true;
-    if (currentUser.role==='admin') return (addedBy||'').includes(currentUser.username);
-    return false;
   }
 
   function openProductModal(editId) {
@@ -345,20 +333,20 @@
     document.getElementById('portfolioModal').classList.add('active');
   }
 
-  document.getElementById('portfolioForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const editId = document.getElementById('portfolioEditId').value;
-    const data = { action: editId?'editPortfolio':'addPortfolio', title: document.getElementById('portfolioTitle').value, description: document.getElementById('portfolioDesc').value, image_url: document.getElementById('portfolioImage').value, added_by_name: currentUser.name, added_by_role: getRoleLabel(currentUser.role) };
-    if (editId) data.portfolio_id = editId;
-    const res = await fetch(API_URL, { method:'POST', body: JSON.stringify(data) });
-    const d = await res.json();
-    if (d.result==='success') { closeModal('portfolioModal'); loadPortfoliosAdmin(); }
-  });
+      document.getElementById('portfolioForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const editId = document.getElementById('portfolioEditId').value;
+      const data = { action: editId?'editPortfolio':'addPortfolio', title: document.getElementById('portfolioTitle').value, description: document.getElementById('portfolioDesc').value, image_url: document.getElementById('portfolioImage').value, added_by_name: currentUser.name, added_by_role: getRoleLabel(currentUser.role) };
+      if (editId) data.portfolio_id = editId;
+      const res = await fetch(API_URL, { method:'POST', body: JSON.stringify(data) });
+      const d = await res.json();
+      if (d.result==='success') { closeModal('portfolioModal'); loadPortfoliosAdmin(); }
+    });
 
-  async function editPortfolio(id) { openPortfolioModal(id); }
-  async function deletePortfolio(id) { if(confirm('حذف؟')) { await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'deletePortfolio', portfolio_id: id }) }); loadPortfoliosAdmin(); } }
+    async function editPortfolio(id) { openPortfolioModal(id); }
+    async function deletePortfolio(id) { if(confirm('حذف؟')) { await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'deletePortfolio', portfolio_id: id }) }); loadPortfoliosAdmin(); } }
 
-      // ========== ORDERS ==========
+    // ========== ORDERS ==========
     async function loadOrdersAdmin() {
       const s = document.getElementById('sectionOrders');
       s.innerHTML = `<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button><h2><i class="fa-solid fa-clipboard-list"></i> سفارشات</h2><div style="overflow-x:auto;"><table><thead><tr><th>کد</th><th>مشتری</th><th>نوع</th><th>قیمت</th><th>پرداخت</th><th>وضعیت</th><th>تاریخ</th><th>عملیات</th></tr></thead><tbody id="ordersTable"></tbody></table></div>`;
@@ -399,32 +387,39 @@
 
     // ========== USERS ==========
     async function loadUsersAdmin() {
+      if (currentUser.role !== 'owner') {
+        document.getElementById('sectionUsers').innerHTML = '<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button><p style="text-align:center;color:#a08b73;">این بخش فقط برای مالک در دسترس است.</p>';
+        return;
+      }
       const s = document.getElementById('sectionUsers');
-      s.innerHTML = `<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button><h2><i class="fa-solid fa-users-gear"></i> کاربران</h2><input type="text" id="userSearch" placeholder="جستجوی کاربر..." style="padding:8px 12px;border:1px solid #e5ddd3;border-radius:8px;margin-bottom:12px;width:100%;" oninput="searchUsers()"><button class="btn btn-sm btn-primary" onclick="openUserModal()" style="margin-bottom:12px;"><i class="fa-solid fa-plus"></i> افزودن</button><div style="overflow-x:auto;"><table><thead><tr><th>نام کاربری</th><th>نام</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="usersTable"></tbody></table></div>`;
+      s.innerHTML = `<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button>
+        <h2><i class="fa-solid fa-users-gear"></i> مدیریت کاربران</h2>
+        <button class="btn btn-sm btn-primary" onclick="openUserModal()" style="margin-bottom:12px;"><i class="fa-solid fa-plus"></i> افزودن کاربر</button>
+        <div style="overflow-x:auto;"><table><thead><tr><th>نام کاربری</th><th>نام</th><th>نقش</th><th>عملیات</th></tr></thead><tbody id="usersTable"></tbody></table></div>`;
       loadUsersList();
     }
 
-    async function loadUsersList(query) {
-      const action = query ? 'searchUsers' : 'getUsers';
-      const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action, query: query||'' }) });
+    async function loadUsersList() {
+      const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'getUsers' }) });
       const d = await res.json();
       const tbody = document.getElementById('usersTable');
-      if (d.result==='success') { tbody.innerHTML = d.data.users.map(u => `<tr><td><button class="btn btn-xs btn-outline" onclick="showContent('${u.username}')"><i class="fa-solid fa-user"></i></button></td><td>${u.name}</td><td>${getRoleLabel(u.role)}</td><td class="actions">${getUserActions(u)}</td></tr>`).join(''); }
+      if (d.result==='success') {
+        tbody.innerHTML = d.data.users.map(u => `<tr><td><button class="btn btn-xs btn-outline" onclick="showContent('${u.username}')"><i class="fa-solid fa-user"></i></button></td><td>${u.name}</td><td>${getRoleLabel(u.role)}</td><td class="actions">${getUserActions(u)}</td></tr>`).join('');
+      }
     }
 
-    function searchUsers() { loadUsersList(document.getElementById('userSearch').value); }
-
     function getUserActions(user) {
-      const r = currentUser.role; let a = '';
-      if (r==='creator'&&user.role!=='creator') { if(user.role!=='owner') a+=`<button class="btn btn-xs btn-success" onclick="setOwner('${user.username}')"><i class="fa-solid fa-crown"></i></button>`; a+=`<button class="btn btn-xs btn-danger" onclick="removeUser('${user.username}')"><i class="fa-solid fa-user-slash"></i></button>`; }
-      if (r==='owner'&&user.username!==currentUser.username&&user.role!=='creator') { if(user.role==='admin') a+=`<button class="btn btn-xs btn-outline" onclick="changeRole('${user.username}','super_admin')"><i class="fa-solid fa-arrow-up"></i></button>`; if(user.role==='super_admin') a+=`<button class="btn btn-xs btn-outline" onclick="changeRole('${user.username}','admin')"><i class="fa-solid fa-arrow-down"></i></button>`; a+=`<button class="btn btn-xs btn-danger" onclick="removeUser('${user.username}')"><i class="fa-solid fa-user-slash"></i></button>`; }
+      if (currentUser.role !== 'owner') return '<span class="badge badge-info">—</span>';
+      let a = '';
+      if (user.role === 'admin') a += `<button class="btn btn-xs btn-outline" onclick="changeRole('${user.username}','super_admin')"><i class="fa-solid fa-arrow-up"></i> ویژه</button>`;
+      if (user.role === 'super_admin') a += `<button class="btn btn-xs btn-outline" onclick="changeRole('${user.username}','admin')"><i class="fa-solid fa-arrow-down"></i> ادمین</button>`;
+      if (user.role !== 'creator' && user.role !== 'owner') a += `<button class="btn btn-xs btn-danger" onclick="removeUser('${user.username}')"><i class="fa-solid fa-user-slash"></i> عزل</button>`;
       return a || '<span class="badge badge-info">—</span>';
     }
 
     function openUserModal() { document.getElementById('userModal').classList.add('active'); }
     async function removeUser(u) { if(confirm('حذف؟')){ await fetch(API_URL,{method:'POST',body:JSON.stringify({action:'removeUser',username:u})}); loadUsersList(); } }
     async function changeRole(u,r) { if(confirm('تغییر نقش؟')){ await fetch(API_URL,{method:'POST',body:JSON.stringify({action:'changeRole',username:u,new_role:r})}); loadUsersList(); } }
-    async function setOwner(u) { if(confirm('انتخاب مالک؟')){ await fetch(API_URL,{method:'POST',body:JSON.stringify({action:'setOwner',username:u})}); loadUsersList(); alert('مالک تغییر کرد. دوباره وارد شوید.'); showLogin(); } }
 
     document.getElementById('userForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -434,6 +429,10 @@
 
     // ========== ADS ==========
     async function loadAdsAdmin() {
+      if (currentUser.role !== 'owner' && currentUser.role !== 'super_admin') {
+        document.getElementById('sectionAds').innerHTML = '<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button><p style="text-align:center;color:#a08b73;">این بخش برای مالک و ادمین ویژه در دسترس است.</p>';
+        return;
+      }
       const s = document.getElementById('sectionAds');
       s.innerHTML = `<button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-right"></i> بازگشت</button><h2><i class="fa-solid fa-ad"></i> تبلیغات</h2><div style="overflow-x:auto;"><table><thead><tr><th>تیتر</th><th>توضیح</th><th>تصویر</th><th>مشتری</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="adsTable"></tbody></table></div>`;
       const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'getAds' }) });
@@ -463,7 +462,6 @@
       }
     }
 
-    // ========== HELPERS ==========
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
     function showContent(text) {
       const ov = document.createElement('div');
